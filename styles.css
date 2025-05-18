@@ -1,0 +1,153 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: black;
+  color: #ffffff;
+  height: 6vh;
+  font-size: 18px;
+}
+
+header .logo {
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.main-nav {
+  display: flex;
+}
+
+.main-nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.auth-nav {
+  margin-left: auto;
+}
+
+.auth-nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.main-nav a:hover, .auth-nav a:hover { /* Added this style */
+  color: #ffd700;
+}
+
+main {
+  text-align: center;
+}
+
+/* Sign Up & Log In Pages */
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110vh;
+}
+
+#signup-page {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+#login-page {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.auth-form {
+  width: 300px;
+}
+
+
+.auth-form label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.auth-form input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: none;
+  border-bottom: solid #cccccc thin;
+}
+
+.auth-form input:focus {
+  border-bottom-color: #007bff;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-form button:hover {
+  background-color: #0056b3;
+}
+
+.auth-form button:active {
+  background-color: #004085;
+}
+
+.auth-form p {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.auth-form a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.auth-form a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FitFlex - Home</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Check authentication status
+        fetch('/api/auth-status')
+          .then(response => response.json())
+          .then(data => {
+            const authNav = document.querySelector('.auth-nav');
+            if (data.isAuthenticated) {
+              // User is logged in, show logout button
+              authNav.innerHTML = '<a href="#" id="logout-btn" class="logout-btn">Logout</a>';
+              document.getElementById('logout-btn').addEventListener('click', function (e) {
+                e.preventDefault();
+                logout();
+              });
+            } else {
+              // User is not logged in, show Sign Up and Log In buttons
+              authNav.innerHTML = `
+                <a href="signup_page.html">Sign Up</a>
+                <a href="login_page.html">Log In</a>
+              `;
+            }
+          })
+          .catch(error => console.error('Error checking auth status:', error));
+      });
+
+      function logout() {
+        fetch('/logout')
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              window.location.href = '/login';
+            } else {
+              console.error('Logout failed:', data.message);
+            }
+          })
+          .catch(error => console.error('Error logging out:', error));
+      }
+    </script>
+  </head>
+  <style>
+    body {
+      background-image: url('images/home_page_bkg.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content-box {
+      background-color: rgba(255, 255, 255, 0.95);
+      margin: 20px auto;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 800px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      font-size: 2em;
+    }
+
+    h2 {
+      color: #3498db;
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+
+    p,
+    li {
+      line-height: 1.6;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    b {
+      color: #e74c3c;
+    }
+
+    .auth-buttons a {
+            color: white;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+    .logout-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+  </style>
+  <body>
+    <header>
+      <div class="logo" onclick="window.location.href='home_page.html'">
+        <img src="images/Logo.png" height="65px" width="70px" alt="logo" />
+      </div>
+      <nav>
+        <div class="main-nav">
+          <a href="home_page.html">Home</a>
+          <a href="edit_profile.html">Profile</a>
+          <a href="Ver1.html">Nutrition Planner</a>
+          <a href="calorie-tracker.html">Daily Calorie Tracker</a>
+        </div>
+        <!-- Auth navigation will be dynamically updated -->
+        <div class="auth-nav">
+          <!-- Default content for non-authenticated users -->
+          <a href="signup_page.html">Sign Up</a>
+          <a href="login_page.html">Log In</a>
+        </div>
+      </nav>
+    </header>
+    <main id="home">
+      <div class="content-box">
+        <h1>Welcome to FitFlex – Your Personalized Fitness and Wellness Companion!</h1>
+        <p>At FitFlex, we believe in empowering individuals to lead healthier and more balanced lives. Our platform combines cutting-edge technology with user-friendly tools to help you achieve your fitness and wellness goals.</p>
+
+        <h2>Our Features</h2>
+
+        <h3>Food Calorie Tracker</h3>
+        <p>The Food Calorie Tracker is designed to help you monitor your daily calorie intake effortlessly. You can log your meals for breakfast, lunch, and dinner, and calculate the total calories consumed throughout the day. The tool allows you to add food items from a database or manually input new items if they are not found. This feature ensures you stay on top of your nutritional goals by providing real-time calorie tracking.</p>
+
+        <h3>Nutrition Planner</h3>
+        <p>The Nutrition Planner enables you to create personalized meal plans tailored to your fitness objectives, whether it's losing weight, gaining muscle, or maintaining overall health. You can select your dietary preferences, set daily calorie and macronutrient targets (protein, carbs, fats), and account for allergies or foods you dislike. Additionally, it includes a Food Library where you can add and categorize food items with detailed nutritional information. The planner also integrates a food tracker to log meals and provides a daily summary to ensure you're meeting your goals.</p>
+
+        <p>Join FitFlex today and take the first step toward a healthier, happier you!</p>
+      </div>
+    </main>
+  </body>
+</html>

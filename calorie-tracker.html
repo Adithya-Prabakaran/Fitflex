@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Food Calorie Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url(images/calorie-tracker.webp);
+            background-size: cover;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: black;
+            color: #ffffff;
+            height: 9vh;
+            font-size: 18px;
+        }
+
+        header .logo {
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+        }
+
+        .main-nav {
+            display: flex;
+        }
+
+        .main-nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .auth-nav {
+            margin-left: auto;
+        }
+
+        .auth-nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .main-nav a:hover, .auth-nav a:hover {
+            color: #ffd700;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .input-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .meal-section {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+        .meal-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        .food-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .remove-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .total-section {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        input, select, button {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .food-not-found {
+            color: red;
+            display: none;
+            margin-top: 5px;
+        }
+        .file-input {
+            margin-bottom: 15px;
+        }
+        .loading {
+            text-align: center;
+            margin: 20px 0;
+            font-style: italic;
+            color: #666;
+        }
+        .autocomplete-container {
+            position: relative;
+            display: inline-block;
+        }
+        .autocomplete-list {
+            position: absolute;
+            border: 1px solid #ddd;
+            border-top: none;
+            z-index: 99;
+            top: 100%;
+            left: 0;
+            right: 0;
+            max-height: 150px;
+            overflow-y: auto;
+            background-color: white;
+            display: none;
+        }
+        .autocomplete-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .autocomplete-item:hover {
+            background-color: #f1f1f1;
+        }
+        .auth-buttons a {
+            color: white;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        /* Main Content Styles */
+        main {
+            flex: 1;
+            padding: 40px 20px;
+        }
+        .profile-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .recommended-tdee {
+            color: #28a745;
+            font-weight: bold;
+            margin-left: 10px;
+            font-size: 0.9em;
+        }
+        /* Healthy swap suggestions styling */
+        .healthy-suggestions {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4CAF50;
+            display: none;
+        }
+        .healthy-suggestions h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        .swap-suggestion {
+            padding: 8px 0;
+            border-bottom: 1px dashed #a5d6a7;
+        }
+        .swap-button {
+            background-color: #66bb6a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .swap-button:hover {
+            background-color: #43a047;
+        }
+.finalise-btn {
+    background-color: #4a90e2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 15px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.finalise-btn:hover {
+    background-color: #357ae8;
+}
+    </style>
+        <script>
+            // Check authentication status when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/auth-status')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.isAuthenticated) {
+                        // User is logged in, show logout button
+                        document.getElementById('auth-buttons').innerHTML = '<a href="#" id="logout-btn" class="logout-btn">Logout</a>';
+                        document.getElementById('logout-btn').addEventListener('click', function(e) {
+                            e.preventDefault();
+                            logout();
+                    });
+                    fetch('/api/user-tdee')
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.tdee) {
+                                const tdeeElement = document.getElementById('tdee-recommendation');
+                                tdeeElement.textContent = `Personal Recommended Daily Intake: ${Math.round(data.tdee)} calories`;
+                            }
+                        })
+                        .catch(error => console.error('Error fetching TDEE:', error));                                        
+                    } else {
+                        // User is not logged in, redirect to login page
+                            window.location.href = '/login';
+                        }
+                    })
+                .catch(error => {
+                    console.error('Error checking auth status:', error);
+                    });
+            });
+        </script>
+</head>
+<body>
+    <header>
+        <div class="logo" onclick="window.location.href='home_page.html'">
+            <img src="images/Logo.png" height="65px" width="70px" alt="logo"> 
+        </div>
+        <nav>
+            <div class="main-nav">
+                <a href="home_page.html">Home</a>
+                <a href="edit_profile.html">Profile</a>
+                <a href="Ver1.html">Nutrition Planner</a>
+                <a href="calorie-tracker.html">Daily Calorie Tracker</a>
+            </div>
+            <div id="auth-buttons" class="auth-nav">
+                <!-- This will be dynamically populated based on authentication status -->
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="profile-container">
+    <h1>Food Calorie Tracker</h1>
+    
+    <div class="input-section">
+        <div id="loading" class="loading" style="display: none;">Loading food database...</div>
+        
+        <select id="meal-type">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="snacks">Snacks</option>
+            <option value="dinner">Dinner</option>
+        </select>
+        
+        <div class="autocomplete-container">
+            <input type="text" id="food-input" placeholder="Enter food item">
+            <div id="autocomplete-list" class="autocomplete-list"></div>
+        </div>
+        
+        <input type="number" id="quantity-input" placeholder="Quantity (pieces/servings)" min="1">
+        <button id="add-btn">Add</button>
+        <div id="food-not-found" class="food-not-found">Food item not found in database!</div>
+    </div>
+    
+    <div id="healthy-suggestions" class="healthy-suggestions">
+        <h3>Healthier Swap Suggestions</h3>
+        <div id="swap-suggestions-list"></div>
+    </div>
+    
+    <div class="meal-section">
+        <div class="meal-header">
+            <h2>Breakfast</h2>
+            <div><span id="breakfast-calories">0</span> calories</div>
+        </div>
+        <div id="breakfast-items"></div>
+    </div>
+    
+    <div class="meal-section">
+        <div class="meal-header">
+            <h2>Lunch</h2>
+            <div><span id="lunch-calories">0</span> calories</div>
+        </div>
+        <div id="lunch-items"></div>
+    </div>
+    
+    <div class="meal-section">
+        <div class="meal-header">
+            <h2>Snacks</h2>
+            <div><span id="snacks-calories">0</span> calories</div>
+        </div>
+        <div id="snacks-items"></div>
+    </div>
+
+    <div class="meal-section">
+        <div class="meal-header">
+            <h2>Dinner</h2>
+            <div><span id="dinner-calories">0</span> calories</div>
+        </div>
+        <div id="dinner-items"></div>
+    </div>
+    
+    <div class="total-section">
+        Total Calories: <span id="total-calories">0</span>
+        <br> <br>
+        <div id="tdee-recommendation" class="recommended-tdee" style="margin-bottom: 20px;"></div>
+    </div>
+</div>
+    </main>
+<script>
+    let foodDatabase = {};
+let healthyFoods = {};
+let unhealthyFoods = {};
+let bestForYouFoods = {};
+let meals = {
+    breakfast: [],
+    lunch: [],
+    snacks: [],
+    dinner: []
+};
+let previouslySuggestedSwaps = new Set();
+
+const foodInput = document.getElementById('food-input');
+const autocompleteList = document.getElementById('autocomplete-list');
+const quantityInput = document.getElementById('quantity-input');
+const mealType = document.getElementById('meal-type');
+const addBtn = document.getElementById('add-btn');
+const foodNotFound = document.getElementById('food-not-found');
+const totalCaloriesEl = document.getElementById('total-calories');
+const breakfastCaloriesEl = document.getElementById('breakfast-calories');
+const lunchCaloriesEl = document.getElementById('lunch-calories');
+const snacksCaloriesEl = document.getElementById('snacks-calories');
+const dinnerCaloriesEl = document.getElementById('dinner-calories');
+const healthySuggestions = document.getElementById('healthy-suggestions');
+const swapSuggestionsList = document.getElementById('swap-suggestions-list');
+
+const premiumHealthyOptions = [
+    'smoked salmon', 'quinoa', 'avocado', 'greek yogurt', 'chia seeds',
+    'kale', 'blueberries', 'sweet potato', 'almonds', 'lentils',
+    'hummus', 'oatmeal', 'tofu', 'edamame', 'cottage cheese'
+];
+const bestForYouOptions = [
+    'kale', 'blueberries', 'salmon', 'lentils', 'quinoa',
+    'sweet potato', 'avocado', 'greek yogurt', 'chia seeds',
+    'turmeric', 'almonds', 'spinach', 'broccoli', 'berries'
+];
+
+// -------------------- LOAD FOOD DATABASE FROM MONGODB --------------------
+async function loadFoodDatabaseFromMongoDB() {
+    try {
+        const response = await fetch('/api/fooditems');
+        const data = await response.json();
+
+        foodDatabase = {};
+        healthyFoods = {};
+        unhealthyFoods = {};
+        bestForYouFoods = {};
+
+        data.forEach(item => {
+            const foodName = item.Food?.toLowerCase().trim();
+            const calories = parseFloat(item.Calories);
+            const category = item.Category?.toLowerCase().trim();
+            const isBestForYou = item.BestForYou || bestForYouOptions.includes(foodName);
+
+            if (foodName && !isNaN(calories)) {
+                foodDatabase[foodName] = calories;
+
+                if (category === 'healthy' || isHealthyFood(foodName, calories)) {
+                    healthyFoods[foodName] = calories;
+                } else {
+                    unhealthyFoods[foodName] = calories;
+                }
+                if (isBestForYou) {
+                    bestForYouFoods[foodName] = calories;
+                }
+            }
+        });
+
+        initializeAutocomplete();
+    } catch (error) {
+        alert('Failed to load food database from server.');
+        foodDatabase = {};
+        healthyFoods = {};
+        unhealthyFoods = {};
+        bestForYouFoods = {};
+    }
+}
+
+// -------------------- INITIALIZATION --------------------
+document.addEventListener('DOMContentLoaded', function() {
+    // Add the finalise button to the page
+    const totalSection = document.querySelector('.total-section');
+    const finaliseBtn = document.createElement('button');
+    finaliseBtn.id = 'finalise-btn';
+    finaliseBtn.className = 'finalise-btn';
+    finaliseBtn.textContent = 'Finalise';
+    finaliseBtn.addEventListener('click', finaliseAndSuggest);
+    totalSection.appendChild(finaliseBtn);
+
+    loadFoodDatabaseFromMongoDB();
+    checkAuthStatus();
+});
+
+addBtn.addEventListener('click', addFood);
+foodInput.addEventListener('input', showAutocomplete);
+
+// -------------------- AUTOCOMPLETE --------------------
+function initializeAutocomplete() {
+    foodInput.addEventListener('input', showAutocomplete);
+}
+
+function showAutocomplete() {
+    const input = foodInput.value.toLowerCase();
+    autocompleteList.innerHTML = '';
+
+    if (input.length >= 2) {
+        const matchingFoods = Object.keys(foodDatabase)
+            .filter(food => food.includes(input))
+            .slice(0, 5);
+
+        matchingFoods.forEach(food => {
+            const item = document.createElement('div');
+            item.className = 'autocomplete-item';
+            item.textContent = food;
+            item.addEventListener('click', () => {
+                foodInput.value = food;
+                autocompleteList.style.display = 'none';
+            });
+            autocompleteList.appendChild(item);
+        });
+
+        autocompleteList.style.display = matchingFoods.length > 0 ? 'block' : 'none';
+    } else {
+        autocompleteList.style.display = 'none';
+    }
+}
+
+// -------------------- FOOD ADD/REMOVE/SWAP --------------------
+function addFood() {
+    const food = foodInput.value.toLowerCase().trim();
+    const quantity = parseInt(quantityInput.value) || 1;
+    const meal = mealType.value;
+
+    if (food && quantity > 0 && foodDatabase[food] !== undefined) {
+        const calories = Math.round(foodDatabase[food] * quantity);
+        const isHealthy = healthyFoods[food] !== undefined;
+        const isBestForYou = bestForYouFoods[food] !== undefined;
+
+        const foodItem = {
+            id: Date.now(),
+            name: food,
+            quantity: quantity,
+            calories: calories,
+            isHealthy: isHealthy,
+            isBestForYou: isBestForYou
+        };
+
+        meals[meal].push(foodItem);
+
+        foodInput.value = '';
+        quantityInput.value = '';
+        foodNotFound.style.display = 'none';
+
+        updateMealDisplay();
+        updateTotalCalories();
+        healthySuggestions.style.display = 'none';
+    } else {
+        foodNotFound.style.display = 'block';
+    }
+}
+
+function removeFood(mealType, foodId) {
+    meals[mealType] = meals[mealType].filter(item => item.id !== foodId);
+    updateMealDisplay();
+    updateTotalCalories();
+    healthySuggestions.style.display = 'none';
+}
+
+function swapFood(mealType, foodId, newFood) {
+    const itemToReplace = meals[mealType].find(item => item.id === foodId);
+    if (!itemToReplace) return;
+
+    const newCalories = Math.round(foodDatabase[newFood] * itemToReplace.quantity);
+    const newFoodItem = {
+        id: Date.now(),
+        name: newFood,
+        quantity: itemToReplace.quantity,
+        calories: newCalories,
+        isHealthy: healthyFoods[newFood] !== undefined,
+        isBestForYou: bestForYouFoods[newFood] !== undefined
+    };
+
+    meals[mealType] = meals[mealType].map(item =>
+        item.id === foodId ? newFoodItem : item
+    );
+
+    updateMealDisplay();
+    updateTotalCalories();
+
+    setTimeout(() => {
+        healthySuggestions.style.display = 'none';
+    }, 1500);
+}
+
+// -------------------- MEAL DISPLAY AND CALORIES --------------------
+function updateMealDisplay() {
+    ['breakfast', 'lunch', 'snacks', 'dinner'].forEach(mealType => {
+        const mealItems = document.getElementById(`${mealType}-items`);
+        mealItems.innerHTML = '';
+        let mealCalories = 0;
+
+        meals[mealType].forEach(item => {
+            mealCalories += item.calories;
+            const foodElement = createFoodElement(item, mealType);
+            mealItems.appendChild(foodElement);
+        });
+
+        document.getElementById(`${mealType}-calories`).textContent = mealCalories;
+    });
+}
+
+function createFoodElement(item, mealType) {
+    const foodElement = document.createElement('div');
+    foodElement.className = 'food-item';
+
+    const bestForYouBadge = item.isBestForYou ?
+        '<span style="background-color: #4CAF50; color: white; font-size: 10px; padding: 2px 5px; border-radius: 10px; margin-left: 5px;">Best for you</span>' : '';
+
+    foodElement.innerHTML = `
+        <div>${item.name} ${bestForYouBadge} (${item.quantity} ${item.quantity === 1 ? 'piece' : 'pieces'}) - ${item.calories} calories</div>
+        <button class="remove-btn" onclick="removeFood('${mealType}', ${item.id})">x</button>
+    `;
+    return foodElement;
+}
+
+function updateTotalCalories() {
+    const total = Object.values(meals).flat().reduce((sum, item) => sum + item.calories, 0);
+    totalCaloriesEl.textContent = total;
+}
+
+// -------------------- HEALTHY SUGGESTIONS --------------------
+function finaliseAndSuggest() {
+    swapSuggestionsList.innerHTML = '';
+    healthySuggestions.style.display = 'block';
+
+    const suggestionsTitle = document.querySelector('.healthy-suggestions h3');
+    suggestionsTitle.textContent = 'Recommended Best-for-You Options';
+
+    ['breakfast', 'lunch', 'snacks', 'dinner'].forEach(mealType => {
+        if (meals[mealType].length > 0) {
+            const randomIndex = Math.floor(Math.random() * meals[mealType].length);
+            const selectedItem = meals[mealType][randomIndex];
+
+            const bestForYouAlternative = findBestForYouAlternative(selectedItem.name);
+
+            if (bestForYouAlternative) {
+                const caloriesDiff = Math.round((foodDatabase[selectedItem.name] - foodDatabase[bestForYouAlternative]) * selectedItem.quantity);
+                const calorieText = caloriesDiff > 0 ? `save ${caloriesDiff}` : `add ${Math.abs(caloriesDiff)}`;
+
+                const suggestionElement = document.createElement('div');
+                suggestionElement.className = 'swap-suggestion';
+                suggestionElement.innerHTML = `
+                    <p><strong>${mealType.charAt(0).toUpperCase() + mealType.slice(1)}:</strong> 
+                       Try "${bestForYouAlternative}" instead of "${selectedItem.name}" 
+                       and ${calorieText} calories!</p>
+                    <button class="swap-button" onclick="swapFood('${mealType}', ${selectedItem.id}, '${bestForYouAlternative}')">
+                       Make Swap
+                    </button>
+                `;
+                swapSuggestionsList.appendChild(suggestionElement);
+            }
+        }
+    });
+
+    if (swapSuggestionsList.children.length === 0) {
+        const noSuggestionsElement = document.createElement('div');
+        noSuggestionsElement.textContent = 'Add some food items to receive personalized suggestions!';
+        swapSuggestionsList.appendChild(noSuggestionsElement);
+    }
+    healthySuggestions.scrollIntoView({ behavior: 'smooth' });
+}
+
+function findBestForYouAlternative(foodName) {
+    const availableBestOptions = Object.keys(bestForYouFoods);
+    if (availableBestOptions.length > 0) {
+        const differentOptions = availableBestOptions.filter(option => option !== foodName);
+        if (differentOptions.length > 0) {
+            return differentOptions[Math.floor(Math.random() * differentOptions.length)];
+        }
+    }
+    const availablePredefinedOptions = bestForYouOptions.filter(
+        option => foodDatabase[option] !== undefined && option !== foodName
+    );
+    if (availablePredefinedOptions.length > 0) {
+        return availablePredefinedOptions[Math.floor(Math.random() * availablePredefinedOptions.length)];
+    }
+    const healthyOptions = Object.keys(healthyFoods).filter(option => option !== foodName);
+    if (healthyOptions.length > 0) {
+        return healthyOptions[Math.floor(Math.random() * healthyOptions.length)];
+    }
+    return null;
+}
+
+// -------------------- HEALTHY/UNHEALTHY LOGIC --------------------
+function isHealthyFood(food, calories) {
+    const healthyKeywords = [
+        'salad', 'vegetable', 'fruit', 'greek yogurt', 'yogurt', 'oatmeal', 'egg',
+        'quinoa', 'fish', 'salmon', 'tuna', 'chicken breast', 'turkey', 'tofu',
+        'lentil', 'bean', 'hummus', 'avocado', 'chia', 'flax', 'nuts', 'almond',
+        'water', 'green tea', 'smoothie', 'rasam', 'dal', 'soup', 'cottage cheese'
+    ];
+    const unhealthyKeywords = [
+        'candy', 'chocolate', 'cookie', 'cake', 'donut', 'pastry', 'brownie', 'ice cream',
+        'soda', 'energy drink', 'fried', 'pizza', 'burger', 'fries', 'chips', 'nachos',
+        'milkshake', 'pancake', 'waffle', 'syrup', 'marshmallow', 'cream', 'bacon'
+    ];
+    for (const keyword of healthyKeywords) {
+        if (food.includes(keyword)) return true;
+    }
+    for (const keyword of unhealthyKeywords) {
+        if (food.includes(keyword)) return false;
+    }
+    return calories < 180;
+}
+
+// -------------------- AUTH CHECK (unchanged) --------------------
+function checkAuthStatus() {
+    fetch('/api/auth-status')
+        .then(response => response.json())
+        .then(data => {
+            if (data.isAuthenticated) {
+                document.getElementById('auth-buttons').innerHTML = '<a href="#" id="logout-btn" class="logout-btn">Logout</a>';
+                document.getElementById('logout-btn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            } else {
+                window.location.href = '/login';
+            }
+        })
+        .catch(error => console.error('Error checking auth status:', error));
+}
+
+function logout() {
+    fetch('/logout')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = '/login';
+            } else {
+                console.error('Logout failed:', data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error logging out:', error);
+        });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+Food,Serving,Calories,Health Quotient,Portions,Carbs (g),Protein (g),Fat (g),Vegetarian,Meal Category
+Charcuterie Board,129 g,595 cal,junk,1 plate,25.8,12.9,12.9,Yes,Vegetarian
+Ice Cream,131 g,370 cal,junk,1 scoop,26.2,13.1,13.1,Yes,Vegetarian
+Khandvi,236 g,220 cal,healthy,1 plate,47.2,23.6,23.6,Yes,"Vegetarian, Vegetarian High Protein"
+Smoked Salmon,266 g,517 cal,best for you,1 fillet,0,53.2,34.6,No,"Vegetarian, Vegetarian High Protein"
+Char Siu,144 g,205 cal,healthy,1 portion,28.8,14.4,14.4,Yes,Vegetarian
+Sweet and Sour Pork,161 g,152 cal,healthy,1 serving,32.2,16.1,16.1,No,Non-Vegetarian
+Tandoori Chicken,181 g,502 cal,junk,1 serving,0,56.1,6.5,No,"Non-Vegetarian, Non-Veg High Protein"
+Sev Puri,146 g,287 cal,healthy,1 serving,29.2,14.6,14.6,Yes,Vegetarian
+Teriyaki Chicken,158 g,301 cal,junk,1 serving,0,49,5.7,No,"Non-Vegetarian, Non-Veg High Protein"
+Jeera Rice,239 g,418 cal,junk,1 serving,66.9,6.5,0.7,Yes,Vegetarian
+Veggie Burger,267 g,283 cal,junk,1 serving,2.7,34.7,29.4,No,"Non-Vegetarian, Non-Veg High Protein"
+Churros,153 g,481 cal,junk,1 serving,30.6,15.3,15.3,Yes,"Vegetarian, Vegetarian High Protein"
+Malabar Biryani,243 g,512 cal,junk,1 serving,48.6,24.3,24.3,Yes,"Non-Vegetarian, Non-Veg High Protein"
+Vegetable Korma,211 g,218 cal,healthy,1 serving,10.5,4.2,1.1,Yes,Vegetarian
+Hawaiian Pizza,218 g,549 cal,junk,1 serving,43.6,21.8,21.8,Yes,"Non-Vegetarian, Non-Veg High Protein"
+Maharashtrian Vada Pav,165 g,274 cal,healthy,1 serving,33,16.5,16.5,Yes,"Vegetarian, Vegetarian High Protein"
+Quail Eggs,159 g,155 cal,healthy,1 serving,1.6,20.7,17.5,No,"Non-Vegetarian, Non-Veg High Protein"
+Greek Salad,257 g,190 cal,healthy,1 serving,51.4,25.7,25.7,Yes,"Vegetarian, Vegetarian High Protein"
+Tomato Basil Soup,377 g,137 cal,healthy,1 serving,75.4,37.7,37.7,Yes,"Vegetarian, Vegetarian High Protein"
+Kashmiri Rogan Josh,192 g,515 cal,junk,1 serving,38.4,19.2,19.2,Yes,"Vegetarian, Vegetarian High Protein"
+Beef Carpaccio,211 g,186 cal,healthy,1 serving,0,54.9,35.9,No,"Non-Vegetarian, Non-Veg High Protein"
+Baingan Bharta,271 g,308 cal,junk,1 serving,54.2,27.1,27.1,Yes,"Vegetarian, Vegetarian High Protein"
+Idli,174 g,283 cal,healthy,2 piece,34.8,17.4,17.4,Yes,"Vegetarian, Vegetarian High Protein"
+Apple Pie,97 g,499 cal,junk,1 serving,19.4,9.7,9.7,Yes,Vegetarian
+Panang Curry,162 g,492 cal,junk,1 plate,32.4,16.2,16.2,Yes,"Vegetarian, Vegetarian High Protein"
+Cookies,170 g,333 cal,junk,2 piece,34,17,17,Yes,"Vegetarian, Vegetarian High Protein"
+Coconut Rice,284 g,510 cal,junk,1 serving,79.5,7.7,0.9,Yes,Vegetarian
+Pho,248 g,202 cal,healthy,1 serving,49.6,24.8,24.8,Yes,"Vegetarian, Vegetarian High Protein"
+Quesadillas,103 g,280 cal,healthy,1 serving,20.6,10.3,10.3,Yes,Vegetarian
+Lassi,194 g,188 cal,healthy,1 serving,38.8,19.4,19.4,Yes,"Vegetarian, Vegetarian High Protein"
+Split Pea Soup,352 g,196 cal,healthy,1 serving,70.4,35.2,35.2,Yes,"Vegetarian, Vegetarian High Protein"
+Chicken Burger,252 g,724 cal,junk,1 serving,0,78.1,9.1,No,"Non-Vegetarian, Non-Veg High Protein"
+Spaghetti Bolognese,208 g,496 cal,junk,1 serving,41.6,20.8,20.8,Yes,"Vegetarian, Vegetarian High Protein"
+Bengali Fish Curry,242 g,324 cal,junk,1 serving,0,53.2,21.8,No,"Non-Vegetarian, Non-Veg High Protein"
+Chicken Lollipop,226 g,311 cal,junk,1 serving,0,70.1,8.1,No,"Non-Vegetarian, Non-Veg High Protein"
+Egg Bhurji,253 g,326 cal,junk,1 serving,2.5,32.9,27.8,No,"Non-Vegetarian, Non-Veg High Protein"
+Bruschetta,279 g,569 cal,junk,1 serving,55.8,27.9,27.9,Yes,"Vegetarian, Vegetarian High Protein"
+Pad Thai,145 g,357 cal,junk,1 serving,29,14.5,14.5,Yes,Vegetarian
+Caviar,271 g,529 cal,junk,1 serving,54.2,27.1,27.1,Yes,"Vegetarian, Vegetarian High Protein"
+Gulab Jamun,125 g,312 cal,junk,1 serving,25,12.5,12.5,Yes,Vegetarian
+Mushroom Soup,377 g,259 cal,healthy,1 serving,75.4,37.7,37.7,Yes,"Vegetarian, Vegetarian High Protein"
+Oysters Rockefeller,164 g,362 cal,junk,1 serving,32.8,16.4,16.4,Yes,"Vegetarian, Vegetarian High Protein"
+Sushi,178 g,574 cal,junk,1 serving,35.6,17.8,17.8,Yes,"Vegetarian, Vegetarian High Protein"
+Upma,206 g,231 cal,healthy,1 serving,41.2,20.6,20.6,Yes,"Vegetarian, Vegetarian High Protein"
+Spring Rolls,252 g,590 cal,junk,1 serving,50.4,25.2,25.2,Yes,"Vegetarian, Vegetarian High Protein"
+French Onion Soup,318 g,291 cal,healthy,1 serving,63.6,31.8,31.8,Yes,"Vegetarian, Vegetarian High Protein"
+Kulcha,102 g,270 cal,healthy,1 serving,20.4,10.2,10.2,Yes,Vegetarian
+Carrot Cake,105 g,150 cal,healthy,1 serving,21,10.5,10.5,Yes,Vegetarian
+Chocolate Mousse,289 g,160 cal,junk,1 serving,57.8,28.9,28.9,Yes,"Vegetarian, Vegetarian High Protein"
+Kulfi,272 g,422 cal,junk,1 serving,54.4,27.2,27.2,Yes,"Vegetarian, Vegetarian High Protein"
+Peking Duck,229 g,419 cal,junk,1 serving,45.8,22.9,22.9,Yes,"Vegetarian, Vegetarian High Protein"
+Arugula Salad,234 g,226 cal,healthy,1 serving,46.8,23.4,23.4,Yes,"Vegetarian, Vegetarian High Protein"
+Laksa,142 g,243 cal,healthy,1 serving,28.4,14.2,14.2,Yes,Vegetarian
+Chicken Biryani,164 g,420 cal,junk,1 serving,0,50.8,5.9,No,"Non-Vegetarian, Non-Veg High Protein"
+Cheesecake,220 g,202 cal,healthy,1 serving,44,22,22,Yes,"Vegetarian, Vegetarian High Protein"
+Croissant,261 g,285 cal,healthy,1 serving,52.2,26.1,26.1,Yes,"Vegetarian, Vegetarian High Protein"
+Gelato,241 g,309 cal,junk,1 serving,48.2,24.1,24.1,Yes,"Vegetarian, Vegetarian High Protein"
+Brownies,299 g,298 cal,healthy,1 serving,59.8,29.9,29.9,Yes,"Vegetarian, Vegetarian High Protein"
+Butternut Squash Soup,239 g,209 cal,healthy,1 serving,47.8,23.9,23.9,Yes,"Vegetarian, Vegetarian High Protein"
+Smoothie,278 g,250 cal,healthy,1 serving,55.6,27.8,27.8,Yes,"Vegetarian, Vegetarian High Protein"
+Shrimp Scampi,116 g,512 cal,junk,1 serving,23.2,11.6,11.6,Yes,Vegetarian
+Pecan Pie,91 g,169 cal,healthy,1 serving,18.2,9.1,9.1,Yes,Vegetarian
+Palak Paneer,193 g,260 cal,healthy,1 serving,5.8,34.7,38.6,Yes,"Vegetarian, Vegetarian High Protein"
+Curd Rice,267 g,372 cal,junk,1 serving,74.8,7.2,0.8,Yes,Vegetarian
+Croque Madame,200 g,178 cal,healthy,1 serving,40,20,20,Yes,"Vegetarian, Vegetarian High Protein"
+Lucknowi Biryani,216 g,200 cal,healthy,1 serving,43.2,21.6,21.6,Yes,"Vegetarian, Vegetarian High Protein"
+Sambar,118 g,295 cal,healthy,1 serving,23.6,11.8,11.8,Yes,Vegetarian
+Paneer Bhurji,223 g,186 cal,healthy,1 serving,6.7,40.1,44.6,Yes,"Vegetarian, Vegetarian High Protein"
+Chicken Manchurian,287 g,498 cal,junk,1 serving,0,89,10.3,No,"Non-Vegetarian, Non-Veg High Protein"
+Black Forest Cake,143 g,348 cal,junk,1 serving,28.6,14.3,14.3,Yes,Vegetarian
+Nachos,131 g,326 cal,junk,1 serving,26.2,13.1,13.1,Yes,Vegetarian
+Scallops,295 g,258 cal,healthy,1 serving,59,29.5,29.5,Yes,"Vegetarian, Vegetarian High Protein"
+Red Curry,245 g,410 cal,junk,1 serving,49,24.5,24.5,Yes,"Vegetarian, Vegetarian High Protein"
+Lobster Bisque,246 g,196 cal,healthy,1 serving,49.2,24.6,24.6,Yes,"Vegetarian, Vegetarian High Protein"
+Naan,292 g,386 cal,junk,1 serving,58.4,29.2,29.2,Yes,"Vegetarian, Vegetarian High Protein"
+Carbonara,176 g,555 cal,junk,1 serving,35.2,17.6,17.6,Yes,"Vegetarian, Vegetarian High Protein"
+Paneer Tikka,288 g,198 cal,healthy,1 plate,8.6,51.8,57.6,Yes,"Vegetarian, Vegetarian High Protein"
+Lentil Soup,356 g,115 cal,healthy,1 serving,71.2,35.6,35.6,Yes,"Vegetarian, Vegetarian High Protein"
+Guacamole,162 g,391 cal,junk,1 serving,32.4,16.2,16.2,Yes,"Vegetarian, Vegetarian High Protein"
+Kachori,166 g,165 cal,healthy,1 serving,33.2,16.6,16.6,Yes,"Vegetarian, Vegetarian High Protein"
+Rasgulla,176 g,504 cal,junk,1 serving,35.2,17.6,17.6,Yes,"Vegetarian, Vegetarian High Protein"
+Rasam,267 g,402 cal,junk,1 serving,53.4,26.7,26.7,Yes,"Vegetarian, Vegetarian High Protein"
+Chow Mein,173 g,336 cal,junk,1 serving,34.6,17.3,17.3,Yes,"Vegetarian, Vegetarian High Protein"
+Chicken Sukka,192 g,377 cal,junk,1 serving,0,59.5,6.9,No,"Non-Vegetarian, Non-Veg High Protein"
+Satay,299 g,364 cal,junk,1 serving,59.8,29.9,29.9,Yes,"Vegetarian, Vegetarian High Protein"
+Prawn Biryani,172 g,224 cal,healthy,1 serving,1.7,41.3,0.5,No,"Non-Vegetarian, Non-Veg High Protein"
+Ramen,165 g,449 cal,junk,1 plate,33,16.5,16.5,Yes,"Vegetarian, Vegetarian High Protein"
+Stuffed Bell Peppers,213 g,175 cal,healthy,1 serving,42.6,21.3,21.3,Yes,"Vegetarian, Vegetarian High Protein"
+Paneer Paratha,186 g,540 cal,junk,1 serving,5.6,33.5,37.2,Yes,"Vegetarian, Vegetarian High Protein"
+Dal Tadka,147 g,596 cal,junk,1 bowl,29.4,14.7,14.7,Yes,Vegetarian
+Coq au Vin,197 g,273 cal,healthy,1 serving,39.4,19.7,19.7,Yes,"Vegetarian, Vegetarian High Protein"
+Gnocchi,192 g,302 cal,junk,1 serving,38.4,19.2,19.2,Yes,"Vegetarian, Vegetarian High Protein"
+Prawn Masala,241 g,596 cal,junk,1 serving,2.4,57.8,0.7,No,"Non-Vegetarian, Non-Veg High Protein"
+Dhokla,163 g,489 cal,junk,1 plate,32.6,16.3,16.3,Yes,"Vegetarian, Vegetarian High Protein"
+Aloo Gobi,261 g,498 cal,junk,1 serving,52.2,26.1,26.1,Yes,"Vegetarian, Vegetarian High Protein"
+Cupcakes,249 g,483 cal,junk,1 serving,49.8,24.9,24.9,Yes,"Vegetarian, Vegetarian High Protein"
+Lamb Chops,298 g,281 cal,healthy,1 serving,59.6,29.8,29.8,No,"Non-Vegetarian, Non-Veg High Protein"
+Ratatouille,222 g,250 cal,healthy,1 serving,44.4,22.2,22.2,Yes,"Vegetarian, Vegetarian High Protein"
+Kashmiri Dum Aloo,221 g,318 cal,junk,1 serving,44.2,22.1,22.1,Yes,"Vegetarian, Vegetarian High Protein"
+Miso Soup,399 g,238 cal,healthy,1 serving,79.8,39.9,39.9,Yes,"Vegetarian, Vegetarian High Protein"
+Fish Tikka,295 g,391 cal,junk,1 serving,0,64.9,26.6,No,"Non-Vegetarian, Non-Veg High Protein"
+Green Curry,185 g,209 cal,healthy,1 serving,37,18.5,18.5,Yes,"Vegetarian, Vegetarian High Protein"
+Fondue,252 g,391 cal,junk,1 serving,50.4,25.2,25.2,Yes,"Vegetarian, Vegetarian High Protein"
+Hyderabadi Biryani,238 g,547 cal,junk,1 serving,47.6,23.8,23.8,Yes,"Non-Vegetarian, Non-Veg High Protein"
+Pav Bhaji,166 g,214 cal,healthy,1 serving,33.2,16.6,16.6,Yes,"Vegetarian, Vegetarian High Protein"
+Falafel,233 g,237 cal,healthy,1 serving,46.6,23.3,23.3,Yes,"Vegetarian, Vegetarian High Protein"
+Chicken Kolhapuri,159 g,166 cal,healthy,1 serving,0,49.3,5.7,No,"Non-Vegetarian, Non-Veg High Protein"
+Cheese Platter,247 g,389 cal,junk,1 serving,49.4,24.7,24.7,Yes,"Vegetarian, Vegetarian High Protein"
+Paella,242 g,326 cal,junk,1 serving,48.4,24.2,24.2,Yes,"Vegetarian, Vegetarian High Protein"
+Kung Pao Chicken,293 g,461 cal,junk,1 serving,0,90.8,10.5,No,"Non-Vegetarian, Non-Veg High Protein"
+Chicken Keema,279 g,554 cal,junk,1 serving,0,86.5,10,No,"Non-Vegetarian, Non-Veg High Protein"
+Chicken Nuggets,214 g,546 cal,junk,1 serving,0,66.3,7.7,No,"Non-Vegetarian, Non-Veg High Protein"
+French Toast,160 g,362 cal,junk,1 serving,32,16,16,Yes,"Vegetarian, Vegetarian High Protein"
+Caprese Skewers,237 g,332 cal,junk,1 serving,47.4,23.7,23.7,Yes,"Vegetarian, Vegetarian High Protein"
+Chicken Tikka Masala,235 g,263 cal,healthy,1 serving,0,72.9,8.5,No,"Non-Vegetarian, Non-Veg High Protein"
+Shrimp Cocktail,168 g,226 cal,healthy,1 glass,33.6,16.8,16.8,Yes,"Vegetarian, Vegetarian High Protein"
+Roti,295 g,282 cal,healthy,1 serving,59,29.5,29.5,Yes,"Vegetarian, Vegetarian High Protein"
+Minestrone,109 g,336 cal,junk,1 serving,21.8,10.9,10.9,Yes,Vegetarian
+Enchiladas,283 g,208 cal,healthy,1 serving,56.6,28.3,28.3,Yes,"Vegetarian, Vegetarian High Protein"
+Sashimi,233 g,354 cal,junk,1 serving,46.6,23.3,23.3,Yes,"Vegetarian, Vegetarian High Protein"
+Kheer,241 g,564 cal,junk,1 bowl,48.2,24.1,24.1,Yes,"Vegetarian, Vegetarian High Protein"
+Quiche,205 g,404 cal,junk,1 serving,41,20.5,20.5,Yes,"Vegetarian, Vegetarian High Protein"
+Foie Gras,228 g,242 cal,healthy,1 serving,45.6,22.8,22.8,Yes,"Vegetarian, Vegetarian High Protein"
+Risotto,266 g,473 cal,junk,1 serving,53.2,26.6,26.6,Yes,"Vegetarian, Vegetarian High Protein"
+Gujarati Kadhi,210 g,391 cal,junk,1 serving,42,21,21,Yes,"Vegetarian, Vegetarian High Protein"
+Fish Curry,209 g,317 cal,junk,1 bowl,0,46,18.8,No,"Non-Vegetarian, Non-Veg High Protein"
+Tuna Tartare,177 g,333 cal,junk,1 serving,35.4,17.7,17.7,Yes,"Vegetarian, Vegetarian High Protein"
+Fish Fry,116 g,415 cal,junk,1 serving,0,25.5,10.4,No,"Non-Vegetarian, Non-Veg High Protein"
+Fish and Chips,113 g,292 cal,junk,1 serving,0,24.9,10.2,No,"Non-Vegetarian, Non-Veg High Protein"
+Stuffed Mushrooms,275 g,187 cal,healthy,1 serving,55,27.5,27.5,Yes,"Vegetarian, Vegetarian High Protein"
+Kerala Fish Curry,285 g,283 cal,healthy,1 bowl,0,62.7,25.7,No,"Non-Vegetarian, Non-Veg High Protein"
+Asparagus Risotto,121 g,480 cal,junk,1 serving,24.2,12.1,12.1,Yes,Vegetarian
+Burritos,244 g,276 cal,healthy,1 serving,48.8,24.4,24.4,Yes,"Vegetarian, Vegetarian High Protein"
+Muffins,240 g,402 cal,junk,1 serving,48,24,24,Yes,"Vegetarian, Vegetarian High Protein"
+Key Lime Pie,144 g,301 cal,junk,1 serving,28.8,14.4,14.4,Yes,Vegetarian
+Cobb Salad,231 g,140 cal,healthy,1 serving,46.2,23.1,23.1,Yes,"Vegetarian, Vegetarian High Protein"
+Filet Mignon,267 g,246 cal,healthy,1 serving,53.4,26.7,26.7,Yes,"Vegetarian, Vegetarian High Protein"
+Prawn Fry,194 g,422 cal,junk,1 serving,1.9,46.6,0.6,No,"Non-Vegetarian, Non-Veg High Protein"
+Crab Cakes,112 g,162 cal,healthy,1 serving,22.4,11.2,11.2,Yes,Vegetarian
+Lasagna,284 g,461 cal,junk,1 serving,56.8,28.4,28.4,Yes,"Vegetarian, Vegetarian High Protein"
+Fried Rice,246 g,336 cal,junk,1 serving,68.9,6.6,0.7,Yes,Vegetarian
+French Fries,204 g,265 cal,junk,1 serving,40.8,20.4,20.4,Yes,"Vegetarian, Vegetarian High Protein"
+Pancakes,158 g,533 cal,junk,1 serving,31.6,15.8,15.8,Yes,"Vegetarian, Vegetarian High Protein"
+Fried Shrimp,247 g,555 cal,junk,1 serving,49.4,24.7,24.7,Yes,"Vegetarian, Vegetarian High Protein"
+Chole,164 g,371 cal,junk,1 bowl,32.8,16.4,16.4,Yes,"Vegetarian, Vegetarian High Protein"
+Dosa,226 g,351 cal,junk,1 serving,45.2,22.6,22.6,Yes,"Vegetarian, Vegetarian High Protein"
+Cheese Burger,228 g,641 cal,junk,1 serving,45.6,22.8,22.8,Yes,"Vegetarian, Vegetarian High Protein"
+Biryani,173 g,529 cal,junk,1 serving,34.6,17.3,17.3,Yes,"Non-Vegetarian, Non-Veg High Protein"
+Fish Burger,160 g,340 cal,junk,1 serving,0,35.2,14.4,No,"Non-Vegetarian, Non-Veg High Protein"
+Pulao,268 g,330 cal,junk,1 serving,53.6,26.8,26.8,Yes,"Vegetarian, Vegetarian High Protein"
+Maharashtrian Puran Poli,100 g,600 cal,junk,1 serving,20,10,10,Yes,Vegetarian
+Clam Chowder,185 g,202 cal,healthy,1 serving,37,18.5,18.5,Yes,"Vegetarian, Vegetarian High Protein"
+Hainanese Chicken Rice,275 g,522 cal,junk,1 serving,0,85.2,9.9,No,"Non-Vegetarian, Non-Veg High Protein"
+Prosciutto-Wrapped Melon,258 g,218 cal,healthy,1 serving,51.6,25.8,25.8,Yes,"Vegetarian, Vegetarian High Protein"
+Red Velvet Cake,73 g,411 cal,junk,1 serving,14.6,7.3,7.3,Yes,Vegetarian
+Crepes,196 g,573 cal,junk,1 serving,39.2,19.6,19.6,Yes,"Vegetarian, Vegetarian High Protein"
+Salsa,287 g,381 cal,junk,1 serving,57.4,28.7,28.7,Yes,"Vegetarian, Vegetarian High Protein"
+Bibimbap,221 g,181 cal,healthy,1 serving,44.2,22.1,22.1,Yes,"Vegetarian, Vegetarian High Protein"
+Kale Caesar Salad,271 g,219 cal,healthy,1 serving,54.2,27.1,27.1,Yes,"Vegetarian, Vegetarian High Protein"
+Gobi Paratha,295 g,483 cal,junk,1 plate,59,29.5,29.5,Yes,"Vegetarian, Vegetarian High Protein"
+Prawn Curry,164 g,236 cal,healthy,1 serving,1.6,39.4,0.5,No,"Non-Vegetarian, Non-Veg High Protein"
+Lobster Ravioli,265 g,308 cal,junk,1 serving,53,26.5,26.5,Yes,"Vegetarian, Vegetarian High Protein"
+Egg Curry,255 g,441 cal,junk,1 piece,2.5,33.1,28,No,"Non-Vegetarian, Non-Veg High Protein"
+Jalebi,178 g,450 cal,junk,1 plate,35.6,17.8,17.8,Yes,"Vegetarian, Vegetarian High Protein"
+Butter Chicken,153 g,166 cal,healthy,1 bowl,0,47.4,5.5,No,"Non-Vegetarian, Non-Veg High Protein"
+Paneer Butter Masala,215 g,475 cal,junk,1 bowl,6.4,38.7,43,Yes,"Vegetarian, Vegetarian High Protein"
+Avocado Toast,278 g,448 cal,junk,1 serving,55.6,27.8,27.8,Yes,"Vegetarian, Vegetarian High Protein"
+Chicken Dhansak,264 g,584 cal,junk,1 serving,0,81.8,9.5,No,"Non-Vegetarian, Non-Veg High Protein"
+Kunafa,148 g,315 cal,junk,1 serving,29.6,14.8,14.8,Yes,Vegetarian
+Massaman Curry,177 g,381 cal,junk,1 serving,35.4,17.7,17.7,Yes,"Vegetarian, Vegetarian High Protein"
+Chicken Vindaloo,163 g,365 cal,junk,1 serving,0,50.5,5.9,No,"Non-Vegetarian, Non-Veg High Protein"
+Croque Monsieur,254 g,576 cal,junk,1 serving,50.8,25.4,25.4,Yes,"Vegetarian, Vegetarian High Protein"
+Rendang,177 g,237 cal,healthy,1 serving,35.4,17.7,17.7,Yes,"Vegetarian, Vegetarian High Protein"
+Goan Fish Curry,299 g,375 cal,junk,1 serving,0,65.8,26.9,No,"Non-Vegetarian, Non-Veg High Protein"
+BBQ Chicken Pizza,275 g,466 cal,junk,1 serving,0,85.2,9.9,No,"Non-Vegetarian, Non-Veg High Protein"
+Tacos,270 g,381 cal,junk,1 serving,54,27,27,Yes,"Vegetarian, Vegetarian High Protein"
+Poha,232 g,511 cal,junk,1 serving,46.4,23.2,23.2,Yes,"Vegetarian, Vegetarian High Protein"
+Mango Sticky Rice,294 g,311 cal,junk,1 serving,82.3,7.9,0.9,Yes,Vegetarian
+Yakitori,116 g,247 cal,healthy,1 serving,23.2,11.6,11.6,Yes,Vegetarian
+Methi Paratha,190 g,543 cal,junk,1 serving,38,19,19,Yes,"Vegetarian, Vegetarian High Protein"
+Shawarma,253 g,355 cal,junk,1 serving,50.6,25.3,25.3,Yes,"Vegetarian, Vegetarian High Protein"
+Vada,261 g,367 cal,junk,1 serving,52.2,26.1,26.1,Yes,"Vegetarian, Vegetarian High Protein"
+Paratha,177 g,429 cal,junk,1 serving,35.4,17.7,17.7,Yes,"Vegetarian, Vegetarian High Protein"
+Kolkata Biryani,181 g,500 cal,junk,1 serving,36.2,18.1,18.1,Yes,"Vegetarian, Vegetarian High Protein"
+Dim Sum,138 g,192 cal,healthy,1 serving,27.6,13.8,13.8,Yes,Vegetarian
+Beef Barley Soup,209 g,150 cal,healthy,1 serving,0,54.3,35.5,No,"Non-Vegetarian, Non-Veg High Protein"
+Sambal,226 g,257 cal,healthy,1 serving,45.2,22.6,22.6,Yes,"Vegetarian, Vegetarian High Protein"
+Tamarind Rice,191 g,228 cal,healthy,1 serving,53.5,5.2,0.6,Yes,Vegetarian
+Panna Cotta,241 g,187 cal,healthy,1 serving,48.2,24.1,24.1,Yes,"Vegetarian, Vegetarian High Protein"
+General Tsos Chicken,225 g,329 cal,junk,1 serving,0,69.8,8.1,No,"Non-Vegetarian, Non-Veg High Protein"
+Mix Veg,137 g,315 cal,junk,1 serving,27.4,13.7,13.7,Yes,Vegetarian
+Vegetable Jalfrezi,191 g,346 cal,junk,1 serving,9.5,3.8,1,Yes,Vegetarian
+Pepperoni Pizza,134 g,359 cal,junk,1 serving,26.8,13.4,13.4,Yes,Non-Vegetarian
+Waffles,103 g,390 cal,junk,1 serving,20.6,10.3,10.3,Yes,Vegetarian
+Caesar Salad,320 g,143 cal,healthy,1 serving,64,32,32,Yes,"Vegetarian, Vegetarian High Protein"
+Kimchi Fried Rice,157 g,273 cal,healthy,1 serving,44,4.2,0.5,Yes,Vegetarian
+Pomegranate Salad,303 g,293 cal,healthy,1 serving,60.6,30.3,30.3,Yes,"Vegetarian, Vegetarian High Protein"
+Baked Brie,249 g,221 cal,healthy,1 serving,49.8,24.9,24.9,Yes,"Vegetarian, Vegetarian High Protein"
+Donuts,176 g,352 cal,junk,1 serving,35.2,17.6,17.6,Yes,"Vegetarian, Vegetarian High Protein"
+Coffee,233 g,334 cal,junk,1 serving,46.6,23.3,23.3,Yes,"Vegetarian, Vegetarian High Protein"
+Gyoza,199 g,324 cal,junk,1 serving,39.8,19.9,19.9,Yes,"Vegetarian, Vegetarian High Protein"
+Baklava,157 g,283 cal,healthy,1 serving,31.4,15.7,15.7,Yes,"Vegetarian, Vegetarian High Protein"
+Pumpkin Soup,308 g,250 cal,healthy,1 serving,61.6,30.8,30.8,Yes,"Vegetarian, Vegetarian High Protein"
+Beef Bourguignon,133 g,380 cal,junk,1 serving,0,34.6,22.6,No,"Non-Vegetarian, Non-Veg High Protein"
+Onion Rings,295 g,399 cal,junk,1 serving,59,29.5,29.5,Yes,"Vegetarian, Vegetarian High Protein"
+Fish Biryani,153 g,228 cal,healthy,1 serving,0,33.7,13.8,No,"Non-Vegetarian, Non-Veg High Protein"
+Hummus,246 g,453 cal,junk,1 serving,49.2,24.6,24.6,Yes,"Vegetarian, Vegetarian High Protein"
+Bhel Puri,158 g,408 cal,junk,1 serving,31.6,15.8,15.8,Yes,"Vegetarian, Vegetarian High Protein"
+Chicken 65,171 g,196 cal,healthy,1 serving,0,53,6.2,No,"Non-Vegetarian, Non-Veg High Protein"
+Tom Kha Gai,193 g,449 cal,junk,1 serving,38.6,19.3,19.3,Yes,"Vegetarian, Vegetarian High Protein"
+Aloo Paratha,186 g,325 cal,junk,1 serving,37.2,18.6,18.6,Yes,"Vegetarian, Vegetarian High Protein"
+Tom Yum Soup,225 g,122 cal,healthy,1 serving,45,22.5,22.5,Yes,"Vegetarian, Vegetarian High Protein"
+Soba,124 g,385 cal,junk,1 serving,24.8,12.4,12.4,Yes,Vegetarian
+Escargot,166 g,364 cal,junk,1 serving,33.2,16.6,16.6,Yes,"Vegetarian, Vegetarian High Protein"
+Gyro,152 g,268 cal,healthy,1 serving,30.4,15.2,15.2,Yes,"Vegetarian, Vegetarian High Protein"
+Masala Chai,104 g,518 cal,junk,1 serving,20.8,10.4,10.4,Yes,Vegetarian
+Bagel with Cream Cheese,211 g,432 cal,junk,1 serving,42.2,21.1,21.1,Yes,"Vegetarian, Vegetarian High Protein"
+Samosa,296 g,283 cal,healthy,1 serving,59.2,29.6,29.6,Yes,"Vegetarian, Vegetarian High Protein"
+Dal Makhani,135 g,572 cal,junk,1 serving,27,13.5,13.5,Yes,Vegetarian
+Milkshake,110 g,375 cal,junk,1 serving,22,11,11,Yes,Vegetarian
+Vada Pav,164 g,215 cal,healthy,1 serving,32.8,16.4,16.4,Yes,"Vegetarian, Vegetarian High Protein"
+Eggs Benedict,224 g,482 cal,junk,1 serving,2.2,29.1,24.6,No,"Non-Vegetarian, Non-Veg High Protein"
+Chicken Cordon Bleu,102 g,321 cal,junk,1 serving,0,31.6,3.7,No,"Non-Vegetarian, Non-Veg High Protein"
+Roti Canai,107 g,234 cal,healthy,1 serving,21.4,10.7,10.7,Yes,Vegetarian
+Quinoa Salad,257 g,113 cal,best for you,1 serving,51.4,25.7,25.7,Yes,"Vegetarian, Vegetarian High Protein"
+Kebabs,132 g,349 cal,junk,1 serving,26.4,13.2,13.2,Yes,Vegetarian
+Crab Legs,176 g,413 cal,junk,1 serving,35.2,17.6,17.6,Yes,"Vegetarian, Vegetarian High Protein"
+Polenta,113 g,342 cal,junk,1 serving,22.6,11.3,11.3,Yes,Vegetarian
+Beet Salad,302 g,135 cal,healthy,1 serving,60.4,30.2,30.2,Yes,"Vegetarian, Vegetarian High Protein"
+Rajasthani Laal Maas,158 g,280 cal,healthy,1 serving,31.6,15.8,15.8,Yes,"Vegetarian, Vegetarian High Protein"
+Mac and Cheese,189 g,500 cal,junk,1 serving,37.8,18.9,18.9,Yes,"Vegetarian, Vegetarian High Protein"
+Baguette,163 g,233 cal,healthy,1 serving,32.6,16.3,16.3,Yes,"Vegetarian, Vegetarian High Protein"
+Pani Puri,190 g,207 cal,healthy,1 serving,38,19,19,Yes,"Vegetarian, Vegetarian High Protein"
+Truffle Pasta,111 g,570 cal,junk,1 serving,27.8,5.6,1.1,Yes,Vegetarian
+Egg Biryani,262 g,220 cal,healthy,1 serving,2.6,34.1,28.8,No,"Non-Vegetarian, Non-Veg High Protein"
+Mussels Marinara,144 g,200 cal,healthy,1 serving,28.8,14.4,14.4,Yes,Vegetarian
+Chicken Chettinad,218 g,448 cal,junk,1 serving,0,67.6,7.8,No,"Non-Vegetarian, Non-Veg High Protein"
+Vegetable Pulao,250 g,186 cal,healthy,1 serving,12.5,5,1.2,Yes,Vegetarian
+Dahi Puri,220 g,300 cal,junk,1 serving,44,22,22,Yes,"Vegetarian, Vegetarian High Protein"
+Fettuccine Alfredo,210 g,240 cal,healthy,1 serving,42,21,21,Yes,"Vegetarian, Vegetarian High Protein"
+Tiramisu,122 g,418 cal,junk,1 serving,24.4,12.2,12.2,Yes,Vegetarian
+Tempura,192 g,228 cal,healthy,1 serving,38.4,19.2,19.2,Yes,"Vegetarian, Vegetarian High Protein"
+Kimchi,287 g,271 cal,healthy,1 serving,57.4,28.7,28.7,Yes,"Vegetarian, Vegetarian High Protein"
+Tomato Rice,216 g,362 cal,junk,1 serving,60.5,5.8,0.6,Yes,Vegetarian
+Lemon Rice,184 g,437 cal,junk,1 serving,51.5,5,0.6,Yes,Vegetarian
+Sorbet,202 g,511 cal,junk,1 serving,40.4,20.2,20.2,Yes,"Vegetarian, Vegetarian High Protein"
+Veggie Pizza,280 g,286 cal,junk,1 serving,2.8,36.4,30.8,Yes,"Vegetarian, Vegetarian High Protein"
+Wagyu Beef,233 g,262 cal,healthy,1 serving,0,60.6,39.6,No,"Non-Vegetarian, Non-Veg High Protein"
+Chettinad Biryani,169 g,558 cal,junk,1 serving,33.8,16.9,16.9,Yes,"Vegetarian, Vegetarian High Protein"
+Japchae,232 g,493 cal,junk,1 serving,46.4,23.2,23.2,Yes,"Vegetarian, Vegetarian High Protein"
+Bouillabaisse,144 g,576 cal,junk,1 serving,28.8,14.4,14.4,Yes,Vegetarian
+Uttapam,222 g,190 cal,healthy,1 serving,44.4,22.2,22.2,Yes,"Vegetarian, Vegetarian High Protein"
+Rajma,132 g,326 cal,junk,1 serving,26.4,13.2,13.2,Yes,Vegetarian
+Flan,168 g,151 cal,healthy,1 serving,33.6,16.8,16.8,Yes,"Vegetarian, Vegetarian High Protein"
+Pumpkin Pie,119 g,488 cal,junk,1 serving,23.8,11.9,11.9,Yes,Vegetarian
+Falooda,168 g,562 cal,junk,1 serving,33.6,16.8,16.8,Yes,"Vegetarian, Vegetarian High Protein"
+Chicken Curry,209 g,397 cal,junk,1 serving,0,64.8,7.5,No,"Non-Vegetarian, Non-Veg High Protein"
+Udon,144 g,240 cal,healthy,1 serving,28.8,14.4,14.4,Yes,Vegetarian
+Lobster Thermidor,200 g,214 cal,healthy,1 serving,40,20,20,No,"Vegetarian, Vegetarian High Protein"
+Fig and Goat Cheese Salad,218 g,289 cal,healthy,1 serving,43.6,21.8,21.8,Yes,"Vegetarian, Vegetarian High Protein"
+Gazpacho,249 g,433 cal,junk,1 serving,49.8,24.9,24.9,Yes,"Vegetarian, Vegetarian High Protein"
+Pongal,138 g,490 cal,junk,1 serving,27.6,13.8,13.8,Yes,Vegetarian
+Artichoke Hearts,203 g,528 cal,junk,1 serving,40.6,20.3,20.3,Yes,"Vegetarian, Vegetarian High Protein"
+Caprese Salad,399 g,260 cal,healthy,1 serving,79.8,39.9,39.9,Yes,"Vegetarian, Vegetarian High Protein"
+Duck Confit,250 g,458 cal,junk,1 serving,50,25,25,Yes,"Vegetarian, Vegetarian High Protein"
+Egg Roast,171 g,418 cal,junk,1 serving,1.7,22.2,18.8,No,"Non-Vegetarian, Non-Veg High Protein"
+Cannoli,204 g,195 cal,healthy,1 serving,40.8,20.4,20.4,Yes,"Vegetarian, Vegetarian High Protein"
+Pakora,140 g,172 cal,healthy,1 serving,28,14,14,Yes,Vegetarian
+Chicken Korma,107 g,162 cal,healthy,1 serving,0,33.2,3.9,No,"Non-Vegetarian, Non-Veg High Protein"
+Clams Casino,245 g,253 cal,healthy,1 serving,49,24.5,24.5,No,"Vegetarian, Vegetarian High Protein"
+Nasi Goreng,236 g,399 cal,junk,1 serving,47.2,23.6,23.6,Yes,"Vegetarian, Vegetarian High Protein"
+Chicken Noodle Soup,227 g,210 cal,healthy,1 serving,0,70.4,8.2,No,"Non-Vegetarian, Non-Veg High Protein"
+Grilled Salmon,201 g,574 cal,best for you,1 serving,0,40.2,26.1,No,"Vegetarian, Vegetarian High Protein"
+Halwa,216 g,541 cal,junk,1 serving,43.2,21.6,21.6,Yes,"Vegetarian, Vegetarian High Protein"
+Misal Pav,275 g,159 cal,healthy,1 serving,55,27.5,27.5,Yes,"Vegetarian, Vegetarian High Protein"
+Vegetable Biryani,194 g,452 cal,junk,1 serving,9.7,3.9,1,Yes,Vegetarian
+Crème Brûlée,136 g,442 cal,junk,1 serving,27.2,13.6,13.6,Yes,Vegetarian
+Khichdi,166 g,231 cal,healthy,1 serving,33.2,16.6,16.6,Yes,"Vegetarian, Vegetarian High Protein"

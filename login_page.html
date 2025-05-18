@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login - FitFlex</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('images/home_page_bkg.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: 100vh;
+        color: #333333;
+      }     
+      .form-row {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+      .form-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .form-column input,
+      .form-column select {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px;
+        font-size: 14px;
+        height: 40px;
+      }
+    </style>
+  </head>  
+  <body>
+    <header>
+      <div class="logo" onclick="window.location.href='home_page.html'">
+        <img src="images/Logo.png" height="65px" width="70px" alt="logo"> 
+      </div>
+      <nav>
+        <div class="main-nav">
+          <a href="home_page.html">Home</a>
+          <a href="edit_profile.html">Profile</a>
+          <a href="Ver1.html">Nutrition Planner</a>
+          <a href="calorie-tracker.html">Daily Calorie Tracker</a>
+        </div>
+        <div class="auth-nav">
+        <a href="signup_page.html">Sign Up</a>
+        <a href="login_page.html">Log In</a>
+        </div>
+      </nav>
+    </header>
+     <div class="login-container">
+      <main id="login-page">
+        <h2>Login</h2>
+        <form class="auth-form" id="loginForm">
+          <div class="form-row">
+            <div class="form-column">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-column">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" placeholder="Enter your password" required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, one special character, and at least 8 or more characters" />
+            </div>
+          </div>
+
+          <button type="submit">Login</button>
+
+          <p>Don't have an account? <a href="signup_page.html">Sign Up</a></p>
+        </form>
+      </main>
+    </div>
+
+    <script>
+      // Wait for the DOM to be fully loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('loginForm');
+        
+        if (loginForm) {
+          loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            fetch('/login', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ email, password }),
+            })
+            .then(response => response.json())
+            .then(data => {
+              alert(data.message);
+              if (data.success) {
+                // Store user email if needed
+                localStorage.setItem('userEmail', email);
+                // Redirect to edit profile page after successful login
+                window.location.href = '/edit_profile';
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('An error occurred during login. Please try again.');
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

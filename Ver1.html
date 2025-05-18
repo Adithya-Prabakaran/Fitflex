@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal Planner</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <style>
+      
+      header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 20px;
+            background-color: black;
+            color: #ffffff;
+            height: 9vh;
+            font-size: 18px;
+        }
+
+        header .logo {
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+        }
+
+        .main-nav {
+            display: flex;
+        }
+
+        .main-nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .auth-nav {
+            margin-left: auto;
+        }
+
+        .auth-nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .main-nav a:hover, .auth-nav a:hover {
+            color: #ffd700;
+        }
+        .auth-buttons a {
+            color: white;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+      :root {
+        --primary: #2ecc71;
+        --primary-dark: #27ae60;
+        --secondary: #3498db;
+        --light-bg: #f9fafb;
+        --text-dark: #2c3e50;
+        --text-light: #7f8c8d;
+        --border-radius: 10px;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        color: var(--text-dark);
+        line-height: 1.6;
+        margin: 0;
+        background-image: url(images/keto.jpg);
+        background-size: auto;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 30px auto;
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        padding: 30px;
+        position: relative;
+        overflow: hidden;
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      .heading1 {
+        position: relative;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .heading1 h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+      }
+
+      .heading1 p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+        max-width: 80%;
+      }
+
+      .form-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--text-dark);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border-radius: var(--border-radius);
+        border: 1px solid #ddd;
+        background-color: var(--light-bg);
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+        outline: none;
+      }
+
+      .form-hint {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.85rem;
+        color: var(--primary);
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border-radius: var(--border-radius);
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: var(--transition);
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background-color: #ecf0f1;
+        color: var(--text-dark);
+      }
+
+      .btn-secondary:hover {
+        background-color: #dde4e6;
+        transform: translateY(-2px);
+      }
+
+      .buttons-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .icon {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      }
+
+      .bg-pattern {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30%;
+        height: 100%;
+        opacity: 0.05;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2327ae60' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+
+      .decoration {
+        position: absolute;
+        bottom: -50px;
+        left: -50px;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: linear-gradient(
+          45deg,
+          rgba(46, 204, 113, 0.2),
+          rgba(52, 152, 219, 0.2)
+        );
+        z-index: -1;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .meal-plan-container {
+        margin-top: 40px;
+      }
+
+      .day-tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+      }
+
+      .day-tab {
+        padding: 10px 20px;
+        background: #f5f7fa;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: var(--transition);
+        white-space: nowrap;
+      }
+
+      .day-tab:hover {
+        background: #e0e6eb;
+      }
+
+      .day-tab.active {
+        background: var(--primary);
+        color: white;
+      }
+
+      .day-content {
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .day-content.active {
+        display: block;
+      }
+
+      .meal-card {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin-bottom: 25px;
+        overflow: hidden;
+      }
+
+      .meal-header {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .meal-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .meal-calories {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
+
+      .food-items {
+        padding: 20px;
+      }
+
+      .food-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .food-item:last-child {
+        border-bottom: none;
+      }
+
+      .food-name {
+        font-weight: 500;
+        color: var(--text-dark);
+      }
+
+      .food-details {
+        display: flex;
+        gap: 15px;
+      }
+
+      .food-detail {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.9rem;
+        color: var(--text-light);
+      }
+
+      .nutrition-summary {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        background: #f9fafb;
+        padding: 15px;
+        border-top: 1px solid #eee;
+      }
+
+      .nutrition-item {
+        text-align: center;
+      }
+
+      .nutrition-value {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      .nutrition-label {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        margin-top: 5px;
+      }
+
+      .daily-summary {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+
+      .summary-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: var(--primary-dark);
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      .summary-card {
+        background: #f9fafb;
+        border-radius: var(--border-radius);
+        padding: 15px;
+        text-align: center;
+      }
+
+      .summary-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 5px;
+      }
+
+      .summary-label {
+        font-size: 0.9rem;
+        color: var(--text-light);
+      }
+
+      .shopping-list-container {
+        margin-top: 40px;
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        padding: 25px;
+      }
+
+      .shopping-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: var(--primary-dark);
+      }
+
+      .shopping-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .shopping-category {
+        background: #f9fafb;
+        border-radius: var(--border-radius);
+        padding: 15px;
+      }
+
+      .category-title {
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: var(--primary);
+        padding-bottom: 8px;
+        border-bottom: 2px solid #eee;
+      }
+
+      .shopping-items {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .shopping-item {
+        padding: 8px 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .shopping-item:before {
+        content: "•";
+        color: var(--primary);
+        margin-right: 8px;
+        font-size: 1.2rem;
+      }
+
+      /* Tips Section */
+      .tips-container {
+        margin-top: 40px;
+        background: #f0f8ff;
+        border-radius: var(--border-radius);
+        padding: 25px;
+      }
+
+      .tips-title {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--primary-dark);
+      }
+
+      .tips-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .tips-list li {
+        padding: 10px 0;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .tips-list li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-weight: bold;
+      }
+
+      .loading-container {
+        text-align: center;
+        padding: 40px;
+      }
+
+      .loading-spinner {
+        border: 4px solid rgba(46, 204, 113, 0.2);
+        border-radius: 50%;
+        border-top: 4px solid var(--primary);
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+      }
+
+      .loading-text {
+        color: var(--primary);
+        font-size: 1.1rem;
+      }
+
+      .message {
+        padding: 15px;
+        border-radius: var(--border-radius);
+        margin: 20px 0;
+      }
+
+      .success {
+        background: #e8f8f0;
+        border-left: 4px solid var(--primary);
+      }
+
+      .error {
+        background: #fdedec;
+        border-left: 4px solid #e74c3c;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 20px;
+        }
+
+        .form-container {
+          grid-template-columns: 1fr;
+        }
+
+        .nutrition-summary {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .buttons-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <script>  
+      function logout() {
+          fetch('/logout')
+              .then(response => response.json())
+              .then(data => {
+                  if (data.success) {
+                      window.location.href = '/login';
+                  }
+              })
+              .catch(error => console.error('Error logging out:', error));
+      }
+
+async function updateCalorieRecommendation() {
+  try {
+    const response = await fetch('/api/user-tdee');
+    const tdeeData = await response.json();
+    const tdee = tdeeData.tdee;
+    
+    const nutritionGoal = document.getElementById('nutritionGoal').value;
+    const calorieMultiplier = NutritionProfile.getCalorieMultiplier(nutritionGoal);
+    const recommendedCalories = Math.round(tdee * calorieMultiplier);
+
+    // Update display and input field
+    document.getElementById('tdee-recommendation').textContent = 
+      `(Personal Recommended Level: ${recommendedCalories} calories)`;
+    document.getElementById('calories').value = recommendedCalories;
+    
+    return recommendedCalories;
+  } catch (error) {
+    console.error('Error updating calories:', error);
+    // Fallback to current input value
+    const currentVal = parseInt(document.getElementById('calories').value) || 2000;
+    document.getElementById('calories').value = currentVal;
+    return currentVal;
+  }
+}
+    
+document.addEventListener('DOMContentLoaded', async function() {
+  try {
+    const response = await fetch('/api/auth-status');
+    const data = await response.json();
+
+    if (data.isAuthenticated) {
+      document.getElementById('auth-buttons').innerHTML = 
+        '<a href="#" id="logout-btn" class="logout-btn">Logout</a>';
+      
+      document.getElementById('logout-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        logout();
+      });
+
+      // Initialize calorie display
+      await updateCalorieRecommendation();
+      
+      // Add nutrition goal listener
+      document.getElementById('nutritionGoal').addEventListener('change', async () => {
+        await updateCalorieRecommendation();
+      });
+      
+    } else {
+      window.location.href = '/login';
+    }
+  } catch (error) {
+    console.error('Initialization error:', error);
+    window.location.href = '/login';
+  }
+});
+      </script>
+  </head>
+  <body>
+    <header>
+      <div class="logo" onclick="window.location.href='home_page.html'">
+          <img src="images/Logo.png" height="65px" width="70px" alt="logo"> 
+      </div>
+      <nav>
+          <div class="main-nav">
+              <a href="home_page.html">Home</a>
+              <a href="edit_profile.html">Profile</a>
+              <a href="Ver1.html">Nutrition Planner</a>
+              <a href="calorie-tracker.html">Daily Calorie Tracker</a>
+          </div>
+          <div id="auth-buttons" class="auth-nav">
+              <!-- This will be dynamically populated based on authentication status -->
+          </div>
+      </nav>
+  </header>
+    <div class="container">
+      <div class="heading1">
+        <h1>Meal Planner</h1>
+        <p>A personalized meal plans with perfect nutrition</p>
+        <div class="bg-pattern"></div>
+        <div class="decoration"></div>
+      </div>
+
+      <div class="form-container">
+        <div class="form-group">
+          <label for="dietType">Diet Type</label>
+          <select id="dietType" class="form-control">
+            <option value="balanced">Balanced</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="non-vegetarian">Non-Vegetarian</option>
+            <option value="high-protein">High Protein</option>
+            <option value="keto">Keto</option>
+            <option value="low-carb">Low Carb</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="nutritionGoal">Nutrition Goal</label>
+          <select id="nutritionGoal" class="form-control">
+            <option value="maintenance">Maintenance</option>
+            <option value="weight-loss">Weight Loss</option>
+            <option value="muscle-gain">Muscle Gain</option>
+            <option value="heart-health">Heart Health</option>
+            <option value="athlete">Athlete Performance</option>
+            <option value="diabetic">Diabetic Friendly</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-right: 25px;">
+          <label for="allergies"
+            >Allergies/Restrictions (comma separated)</label
+          >
+          <input
+            type="text"
+            id="allergies"
+            class="form-control"
+            placeholder="e.g., Fish, banana"
+          />
+        </div>
+       
+        <div class="form-group" style="margin-right: 30px;">
+          <label for="calories">Daily Calories</label>
+          <input
+            type="number"
+            id="calories"
+            class="form-control"
+            min="1200"
+            max="4000"
+            value="2000"
+          /> 
+          <span id="tdee-recommendation" style="color: olivedrab;" class="recommended"></span>
+        </div>
+
+      
+        <div class="form-group">
+            <label for="days">Number of Days (1-30)</label>
+          <input
+            type="number"
+            id="days"
+            class="form-control"
+            min="1"
+            max="30"
+            value="7"
+          />
+        </div>
+      </div>
+
+      <div class="buttons-container">
+        <button class="btn btn-primary" onclick="MealPlanner.generatePlan()">
+          <span class="icon">🍽️</span> Generate Meal Plan
+        </button>
+      </div>
+
+      <div id="errorContainer"></div>
+      <div id="successContainer"></div>
+
+      <div
+        id="loadingIndicator"
+        class="loading-container"
+        style="display: none"
+      >
+        <div class="loading-spinner"></div>
+        <p class="loading-text">
+          Analyzing your food database and generating optimal meal plan...
+        </p>
+        <p>This may take a moment for multi-day plans</p>
+      </div>
+
+      <div id="mealPlanOutput" class="meal-plan-container"></div>
+      <div
+        id="shoppingListContainer"
+        class="shopping-list-container"
+        style="display: none"
+      ></div>
+      <div
+        id="additionalTips"
+        class="tips-container"
+        style="display: none"
+      ></div>
+    </div>
+
+    <script>
+
+let foodDatabase = [];
+let healthyFoods = {};
+let unhealthyFoods = {};
+let bestForYouFoods = {};
+let meals = {
+    breakfast: [],
+    lunch: [],
+    snacks: [],
+    dinner: []
+};
+let previouslySuggestedSwaps = new Set();
+
+async function loadFoodDatabaseFromMongoDB() {
+    try {
+        const response = await fetch('/api/fooditems');
+        foodDatabase = await response.json();
+        
+        // Process MongoDB documents into foodDatabase format
+        healthyFoods = {};
+        unhealthyFoods = {};
+        bestForYouFoods = {};
+
+        foodDatabase.forEach(item => {
+            const foodName = item.Food.toLowerCase().trim();
+            const calories = parseFloat(item.Calories);
+            const category = item.Category?.toLowerCase().trim();
+            const isBestForYou = item.BestForYou || bestForYouOptions.includes(foodName);
+
+            if (foodName && !isNaN(calories)) {
+                // Create standardized food object
+                const foodObj = {
+                    name: item.Food,
+                    serving: item.ServingSize || "100g",
+                    calories: calories,
+                    carbs: parseFloat(item.Carbs) || 0,
+                    protein: parseFloat(item.Protein) || 0,
+                    fat: parseFloat(item.Fat) || 0,
+                    vegetarian: item.Vegetarian || false,
+                    tags: item.Tags ? item.Tags.split(',') : [],
+                    mealCategory: item.MealCategory?.toLowerCase() || 'general',
+                    foodType: determineFoodType(item.Food, item.Tags)
+                };
+
+                // Replace existing entry
+                const existingIndex = foodDatabase.findIndex(f => f.name.toLowerCase() === foodName);
+                if (existingIndex > -1) {
+                    foodDatabase[existingIndex] = foodObj;
+                } else {
+                    foodDatabase.push(foodObj);
+                }
+
+                // Categorize foods
+                if (category === 'healthy' || isHealthyFood(foodName, calories)) {
+                    healthyFoods[foodName] = foodObj;
+                } else {
+                    unhealthyFoods[foodName] = foodObj;
+                }
+
+                if (isBestForYou) {
+                    bestForYouFoods[foodName] = foodObj;
+                }
+            }
+        });
+
+        console.log('Loaded food database from MongoDB:', foodDatabase.length, 'items');
+        initializeAutocomplete();
+    } catch (error) {
+        console.error('Error loading from MongoDB:', error);
+        alert('Failed to load food database from server');
+    }
+}
+
+      async function updateCalorieRecommendation() {
+  try {
+    const response = await fetch('/api/user-tdee');
+    const tdeeData = await response.json();
+    const tdee = tdeeData.tdee;
+    
+    const nutritionGoal = document.getElementById('nutritionGoal').value;
+    const calorieMultiplier = NutritionProfile.getCalorieMultiplier(nutritionGoal);
+    const recommendedCalories = Math.round(tdee * calorieMultiplier);
+
+    // Update display and input field
+    document.getElementById('tdee-recommendation').textContent = 
+      `(Personal Recommended Level: ${recommendedCalories} calories)`;
+    document.getElementById('calories').value = recommendedCalories;
+    
+    return recommendedCalories;
+  } catch (error) {
+    console.error('Error updating calories:', error);
+    // Fallback to current input value
+    const currentVal = parseInt(document.getElementById('calories').value) || 2000;
+    document.getElementById('calories').value = currentVal;
+    return currentVal;
+  }
+}
+
+      class NutritionProfile {
+        static getMacroDistribution(dietType, goal) {
+          const profiles = {
+            balanced: {
+              "weight-loss": { protein: 0.3, carbs: 0.4, fat: 0.3 },
+              "muscle-gain": { protein: 0.35, carbs: 0.4, fat: 0.25 },
+              maintenance: { protein: 0.25, carbs: 0.5, fat: 0.25 },
+              "heart-health": { protein: 0.3, carbs: 0.4, fat: 0.3 },
+              athlete: { protein: 0.3, carbs: 0.5, fat: 0.2 },
+              diabetic: { protein: 0.3, carbs: 0.3, fat: 0.4 },
+            },
+            vegetarian: {
+              "weight-loss": { protein: 0.3, carbs: 0.4, fat: 0.3 },
+              "muscle-gain": { protein: 0.35, carbs: 0.4, fat: 0.25 },
+              maintenance: { protein: 0.25, carbs: 0.5, fat: 0.25 },
+              "heart-health": { protein: 0.3, carbs: 0.4, fat: 0.3 },
+              athlete: { protein: 0.3, carbs: 0.5, fat: 0.2 },
+              diabetic: { protein: 0.3, carbs: 0.3, fat: 0.4 },
+            },
+            "non-vegetarian": {
+              "weight-loss": { protein: 0.35, carbs: 0.35, fat: 0.3 },
+              "muscle-gain": { protein: 0.4, carbs: 0.35, fat: 0.25 },
+              maintenance: { protein: 0.3, carbs: 0.45, fat: 0.25 },
+              "heart-health": { protein: 0.35, carbs: 0.35, fat: 0.3 },
+              athlete: { protein: 0.35, carbs: 0.5, fat: 0.15 },
+              diabetic: { protein: 0.35, carbs: 0.25, fat: 0.4 },
+            },
+            "high-protein": {
+              "weight-loss": { protein: 0.4, carbs: 0.3, fat: 0.3 },
+              "muscle-gain": { protein: 0.45, carbs: 0.3, fat: 0.25 },
+              maintenance: { protein: 0.35, carbs: 0.4, fat: 0.25 },
+              "heart-health": { protein: 0.4, carbs: 0.3, fat: 0.3 },
+              athlete: { protein: 0.4, carbs: 0.4, fat: 0.2 },
+              diabetic: { protein: 0.4, carbs: 0.2, fat: 0.4 },
+            },
+            keto: {
+              "weight-loss": { protein: 0.25, carbs: 0.05, fat: 0.7 },
+              "muscle-gain": { protein: 0.3, carbs: 0.05, fat: 0.65 },
+              maintenance: { protein: 0.2, carbs: 0.05, fat: 0.75 },
+              "heart-health": { protein: 0.25, carbs: 0.05, fat: 0.7 },
+              athlete: { protein: 0.3, carbs: 0.1, fat: 0.6 },
+              diabetic: { protein: 0.25, carbs: 0.05, fat: 0.7 },
+            },
+            "low-carb": {
+              "weight-loss": { protein: 0.3, carbs: 0.2, fat: 0.5 },
+              "muscle-gain": { protein: 0.35, carbs: 0.2, fat: 0.45 },
+              maintenance: { protein: 0.25, carbs: 0.25, fat: 0.5 },
+              "heart-health": { protein: 0.3, carbs: 0.2, fat: 0.5 },
+              athlete: { protein: 0.35, carbs: 0.3, fat: 0.35 },
+              diabetic: { protein: 0.3, carbs: 0.2, fat: 0.5 },
+            },
+          };
+
+          return profiles[dietType][goal];
+        }
+
+        static getCalorieMultiplier(goal) {
+          return {
+            "weight-loss": 0.9,
+            "muscle-gain": 1.1,
+            maintenance: 1.0,
+            "heart-health": 0.95,
+            athlete: 1.2,
+            diabetic: 0.95,
+          }[goal];
+        }
+
+        static getMealPortions(goal) {
+          return {
+            "weight-loss": [0.2, 0.35, 0.35, 0.1],
+            "muscle-gain": [0.25, 0.35, 0.35, 0.05],
+            maintenance: [0.25, 0.35, 0.35, 0.05],
+            "heart-health": [0.25, 0.35, 0.3, 0.1],
+            athlete: [0.25, 0.35, 0.35, 0.05],
+            diabetic: [0.25, 0.35, 0.3, 0.1],
+          }[goal];
+        }
+
+        static getCalorieSuggestion(calories, goal) {
+          let suggestion = "";
+
+          if (goal === "weight-loss") {
+            if (calories < 1200)
+              suggestion =
+                "Warning: Very low calorie intake may not meet nutritional needs";
+            else if (calories < 1500)
+              suggestion = "Typical for weight loss (sedentary women)";
+            else if (calories < 1800)
+              suggestion = "Typical for weight loss (sedentary men)";
+            else
+              suggestion =
+                "Aggressive weight loss - consider consulting a nutritionist";
+          } else if (goal === "muscle-gain") {
+            if (calories < 2000)
+              suggestion = "May be too low for effective muscle gain";
+            else if (calories < 2500)
+              suggestion = "Good for muscle gain (women or smaller men)";
+            else if (calories < 3000)
+              suggestion = "Good for muscle gain (average men)";
+            else suggestion = "High calorie intake for serious muscle building";
+          } else if (goal === "maintenance") {
+            if (calories < 1500)
+              suggestion = "Likely below maintenance for most adults";
+            else if (calories < 2000)
+              suggestion = "Typical maintenance for sedentary women";
+            else if (calories < 2500)
+              suggestion =
+                "Typical maintenance for active women or sedentary men";
+            else suggestion = "Typical maintenance for active men";
+          } else if (goal === "heart-health") {
+            if (calories < 1500)
+              suggestion = "May be too low for balanced heart-healthy diet";
+            else if (calories < 2000)
+              suggestion = "Good for heart health (women)";
+            else if (calories < 2500)
+              suggestion = "Good for heart health (men)";
+            else
+              suggestion =
+                "Ensure calories come from healthy fats and whole foods";
+          } else if (goal === "athlete") {
+            if (calories < 2000)
+              suggestion = "Likely too low for athletic performance";
+            else if (calories < 3000) suggestion = "Good for moderate training";
+            else if (calories < 4000) suggestion = "Good for intense training";
+            else suggestion = "High-performance athlete level calories";
+          } else if (goal === "diabetic") {
+            if (calories < 1200)
+              suggestion =
+                "Warning: Very low calorie intake may not meet nutritional needs";
+            else if (calories < 1800) suggestion = "Typical for diabetic women";
+            else if (calories < 2200) suggestion = "Typical for diabetic men";
+            else
+              suggestion =
+                "Monitor blood sugar carefully with higher calorie intake";
+          }
+
+          return suggestion;
+        }
+
+        static getGoalSuggestion(goal) {
+          return {
+            "weight-loss":
+              "Aim for 0.5-1kg (1-2lbs) weight loss per week for sustainable results",
+            "muscle-gain":
+              "Combine with resistance training 3-5 times per week for best results",
+            maintenance:
+              "Adjust portions based on activity level to maintain current weight",
+            "heart-health":
+              "Focus on unsaturated fats, fiber, and antioxidant-rich foods",
+            athlete:
+              "Time carbohydrate intake around workouts for optimal performance",
+            diabetic: "Spread carbohydrate intake evenly throughout the day",
+          }[goal];
+        }
+
+        static getAdditionalTips(dietType, goal, strictFilters) {
+          const tips = {
+            "weight-loss": [
+              "Drink plenty of water throughout the day to stay hydrated and reduce hunger",
+              "Include high-fiber foods like vegetables and whole grains to feel full longer",
+              "Practice mindful eating and portion control during meals",
+              "Avoid sugary drinks and processed snacks that add empty calories",
+              "Incorporate protein with every meal to maintain muscle mass",
+            ],
+            "muscle-gain": [
+              "Consume protein within 30 minutes after workout for optimal recovery",
+              "Spread protein intake evenly across meals for better absorption",
+              "Include healthy fats like nuts and avocados for hormone production",
+              "Stay consistent with your meal timing to support muscle growth",
+              "Consider a post-workout shake with protein and simple carbs",
+            ],
+            "heart-health": [
+              "Choose unsaturated fats (olive oil, nuts, fish) over saturated fats",
+              "Include omega-3 rich foods like salmon at least twice a week",
+              "Limit sodium intake to under 2300mg per day to support blood pressure",
+              "Eat a variety of colorful vegetables for diverse antioxidants",
+              "Opt for whole grains instead of refined carbohydrates",
+            ],
+            athlete: [
+              "Hydrate well before, during and after exercise sessions",
+              "Time carbohydrate intake around workouts for Calories  and recovery",
+              "Include antioxidant-rich foods like berries for recovery",
+              "Don't skip post-workout nutrition to maximize recovery",
+              "Consider electrolyte replacement during prolonged exercise",
+            ],
+            diabetic: [
+              "Pair carbohydrates with protein or fat to slow glucose absorption",
+              "Choose low glycemic index foods for better blood sugar control",
+              "Spread carbohydrate intake evenly throughout the day",
+              "Monitor portion sizes to manage calorie and carb intake",
+              "Include fiber-rich foods to help regulate blood sugar",
+            ],
+            maintenance: [
+              "Maintain consistent eating patterns for metabolic health",
+              "Listen to your hunger and fullness cues to avoid overeating",
+              "Include a variety of foods for complete nutrition",
+              "Stay active and adjust portions based on activity level",
+              "Enjoy treats in moderation as part of a balanced diet",
+            ],
+          };
+
+          let additionalTips = tips[goal] || [];
+
+          if (dietType === "vegetarian") {
+            additionalTips.push(
+              "Combine plant proteins (beans + rice) for complete amino acids",
+              "Consider supplementing with B12 if not getting from fortified foods",
+              "Include iron-rich foods with vitamin C for better absorption"
+            );
+          }
+
+          if (dietType === "keto") {
+            additionalTips.push(
+              "Monitor electrolyte intake to avoid 'keto flu' symptoms",
+              "Stay hydrated and increase salt intake during adaptation",
+              "Focus on nutrient-dense low-carb vegetables"
+            );
+          }
+
+          if (strictFilters) {
+            additionalTips.push(
+              "When working with dietary restrictions, plan meals ahead to ensure nutritional adequacy",
+              "Consider consulting a dietitian to ensure you're meeting all nutrient needs",
+              "Explore alternative ingredients that fit your restrictions"
+            );
+          }
+
+          return additionalTips;
+        }
+      }
+
+      class MealPlanner {
+
+        static async generatePlan() {
+  try {
+    document.getElementById("mealPlanOutput").innerHTML = "";
+    document.getElementById("shoppingListContainer").innerHTML = "";
+    document.getElementById("shoppingListContainer").style.display = "none";
+    document.getElementById("additionalTips").innerHTML = "";
+    document.getElementById("additionalTips").style.display = "none";
+    document.getElementById("errorContainer").innerHTML = "";
+    document.getElementById("successContainer").innerHTML = "";
+
+    document.getElementById("loadingIndicator").style.display = "block";
+
+    const dietType = document.getElementById("dietType").value;
+    const nutritionGoal = document.getElementById("nutritionGoal").value;
+    const allergies = document
+      .getElementById("allergies")
+      .value.toLowerCase()
+      .split(/,\s*/)
+      .filter((a) => a);
+    const targetCalories = parseInt(document.getElementById("calories").value);
+    const days = parseInt(document.getElementById("days").value);
+
+    // ==== Load food data from MongoDB ====
+    let foodDatabase = [];
+    try {
+      const response = await fetch('/api/fooditems');
+      if (!response.ok) throw new Error('Failed to load food database from server.');
+      const data = await response.json();
+      // Normalize the food objects for planner logic
+      foodDatabase = data.map(item => ({
+        name: item.Food,
+        serving: item.ServingSize || "100g",
+        calories: parseFloat(item.Calories),
+        carbs: parseFloat(item.Carbs) || 0,
+        protein: parseFloat(item.Protein) || 0,
+        fat: parseFloat(item.Fat) || 0,
+        vegetarian: item.Vegetarian === true || (typeof item.Vegetarian === "string" && item.Vegetarian.toLowerCase() === "true"),
+        tags: item.Tags ? item.Tags.split(',').map(t => t.trim().toLowerCase()) : [],
+        mealCategory: item.MealCategory ? item.MealCategory.toLowerCase() : "general"
+      }));
+    } catch (err) {
+      throw new Error("Could not load food database from server.");
+    }
+
+    // ==== Filter foods based on user input ====
+    let filteredFoods = foodDatabase.filter((food) => {
+      if (dietType === "vegetarian" && !food.vegetarian) return false;
+      for (const allergy of allergies) {
+        if (food.name.toLowerCase().includes(allergy)) return false;
+        if (food.tags.some((tag) => tag.includes(allergy))) return false;
+      }
+      return true;
+    });
+
+    if (filteredFoods.length === 0) {
+      throw new Error(
+        "No foods match your dietary restrictions. Please adjust your filters."
+      );
+    }
+
+    const calorieMultiplier = NutritionProfile.getCalorieMultiplier(nutritionGoal);
+    const adjustedCalories = Math.round(targetCalories * calorieMultiplier);
+
+    const macroDistribution = NutritionProfile.getMacroDistribution(
+      dietType,
+      nutritionGoal
+    );
+    const mealPortions = NutritionProfile.getMealPortions(nutritionGoal);
+
+    const mealPlan = [];
+    const shoppingList = new Set();
+
+    for (let day = 1; day <= days; day++) {
+      const dayPlan = this.generateDayPlan(
+        filteredFoods,
+        adjustedCalories,
+        macroDistribution,
+        mealPortions,
+        day
+      );
+
+      mealPlan.push(dayPlan);
+
+      dayPlan.meals.forEach((meal) => {
+        meal.items.forEach((item) => {
+          shoppingList.add(item.name);
+        });
+      });
+    }
+
+    this.displayMealPlan(mealPlan);
+    this.displayShoppingList(Array.from(shoppingList));
+    this.displayAdditionalTips(
+      dietType,
+      nutritionGoal,
+      allergies.length > 0
+    );
+
+    const successDiv = document.createElement("div");
+    successDiv.className = "success message";
+    successDiv.innerHTML = `
+      <h3>Success!</h3>
+      <p>Generated ${days}-day ${dietType} meal plan for ${nutritionGoal.replace(
+        "-",
+        " "
+      )} goal.</p>
+      <p>Total calories per day: ~${Math.round(
+        mealPlan[0].totals.calories
+      )} kcal</p>
+    `;
+    document.getElementById("successContainer").appendChild(successDiv);
+  } catch (error) {
+    const errorDiv = document.createElement("div");
+    errorDiv.className = "error message";
+    errorDiv.innerHTML = `
+      <h3>Error</h3>
+      <p>${error.message}</p>
+    `;
+    document.getElementById("errorContainer").appendChild(errorDiv);
+  } finally {
+    document.getElementById("loadingIndicator").style.display = "none";
+  }
+}
+
+        static generateDayPlan(
+          foods,
+          targetCalories,
+          macroDistribution,
+          mealPortions,
+          dayNumber
+        ) {
+          const meals = [
+            {
+              name: "Breakfast",
+              targetCalories: Math.round(targetCalories * mealPortions[0]),
+              items: [],
+            },
+            {
+              name: "Lunch",
+              targetCalories: Math.round(targetCalories * mealPortions[1]),
+              items: [],
+            },
+            {
+              name: "Dinner",
+              targetCalories: Math.round(targetCalories * mealPortions[2]),
+              items: [],
+            },
+            {
+              name: "Snack",
+              targetCalories: Math.round(targetCalories * mealPortions[3]),
+              items: [],
+            },
+          ];
+
+          const breakfastFoods = foods.filter(
+            (f) => f.mealCategory === "breakfast"
+          );
+          const lunchFoods = foods.filter((f) => f.mealCategory === "lunch");
+          const dinnerFoods = foods.filter((f) => f.mealCategory === "dinner");
+          const snackFoods = foods.filter((f) => f.mealCategory === "snack");
+
+          meals.forEach((meal) => {
+            let remainingCalories = meal.targetCalories;
+            let mealFoods = [];
+
+            switch (meal.name) {
+              case "Breakfast":
+                mealFoods = breakfastFoods.length > 0 ? breakfastFoods : foods;
+                break;
+              case "Lunch":
+                mealFoods = lunchFoods.length > 0 ? lunchFoods : foods;
+                break;
+              case "Dinner":
+                mealFoods = dinnerFoods.length > 0 ? dinnerFoods : foods;
+                break;
+              case "Snack":
+                mealFoods = snackFoods.length > 0 ? snackFoods : foods;
+                break;
+            }
+
+            mealFoods.sort((a, b) => {
+              if (a.healthQuotient === "high" && b.healthQuotient !== "high")
+                return -1;
+              if (b.healthQuotient === "high" && a.healthQuotient !== "high")
+                return 1;
+              return 0;
+            });
+
+            while (remainingCalories > 0 && mealFoods.length > 0) {
+              const weights = mealFoods.map((f) =>
+                f.healthQuotient === "high"
+                  ? 3
+                  : f.healthQuotient === "medium"
+                  ? 2
+                  : 1
+              );
+              const totalWeight = weights.reduce((a, b) => a + b, 0);
+              let random = Math.random() * totalWeight;
+              let selectedIndex = 0;
+
+              for (let i = 0; i < weights.length; i++) {
+                random -= weights[i];
+                if (random <= 0) {
+                  selectedIndex = i;
+                  break;
+                }
+              }
+
+              const selectedFood = mealFoods[selectedIndex];
+              const portionCalories = Math.min(
+                selectedFood.calories,
+                remainingCalories
+              );
+              const portionSize = portionCalories / selectedFood.calories;
+
+              meal.items.push({
+                name: selectedFood.name,
+                serving: selectedFood.serving,
+                calories: portionCalories,
+                carbs: selectedFood.carbs * portionSize,
+                protein: selectedFood.protein * portionSize,
+                fat: selectedFood.fat * portionSize,
+              });
+
+              remainingCalories -= portionCalories;
+
+              mealFoods.splice(selectedIndex, 1);
+            }
+
+            meal.totalCalories = meal.items.reduce(
+              (sum, item) => sum + item.calories,
+              0
+            );
+            meal.totalCarbs = meal.items.reduce(
+              (sum, item) => sum + item.carbs,
+              0
+            );
+            meal.totalProtein = meal.items.reduce(
+              (sum, item) => sum + item.protein,
+              0
+            );
+            meal.totalFat = meal.items.reduce((sum, item) => sum + item.fat, 0);
+          });
+
+          const dayCalories = meals.reduce(
+            (sum, meal) => sum + meal.totalCalories,
+            0
+          );
+          const dayCarbs = meals.reduce(
+            (sum, meal) => sum + meal.totalCarbs,
+            0
+          );
+          const dayProtein = meals.reduce(
+            (sum, meal) => sum + meal.totalProtein,
+            0
+          );
+          const dayFat = meals.reduce((sum, meal) => sum + meal.totalFat, 0);
+
+          return {
+            day: dayNumber,
+            meals,
+            totals: {
+              calories: dayCalories,
+              carbs: dayCarbs,
+              protein: dayProtein,
+              fat: dayFat,
+            },
+          };
+        }
+
+        static displayMealPlan(mealPlan) {
+          const container = document.getElementById("mealPlanOutput");
+          container.innerHTML = "";
+
+          const tabsContainer = document.createElement("div");
+          tabsContainer.className = "day-tabs";
+
+          const contentContainer = document.createElement("div");
+          contentContainer.className = "day-contents";
+
+          mealPlan.forEach((dayPlan, index) => {
+            const tab = document.createElement("div");
+            tab.className = `day-tab ${index === 0 ? "active" : ""}`;
+            tab.textContent = `Day ${dayPlan.day}`;
+            tab.onclick = () => this.showDayContent(index);
+            tabsContainer.appendChild(tab);
+
+            const content = document.createElement("div");
+            content.className = `day-content ${index === 0 ? "active" : ""}`;
+            content.id = `day-${index}-content`;
+
+            const dayHeader = document.createElement("h2");
+            dayHeader.textContent = `Day ${dayPlan.day} Meal Plan`;
+            content.appendChild(dayHeader);
+
+            const summaryDiv = document.createElement("div");
+            summaryDiv.className = "daily-summary";
+
+            const summaryTitle = document.createElement("h3");
+            summaryTitle.className = "summary-title";
+            summaryTitle.textContent = "Daily Nutrition Summary";
+            summaryDiv.appendChild(summaryTitle);
+
+            const summaryGrid = document.createElement("div");
+            summaryGrid.className = "summary-grid";
+
+            const caloriesCard = this.createSummaryCard(
+              "Calories",
+              `${Math.round(dayPlan.totals.calories)} kcal`,
+              "🔥"
+            );
+            const carbsCard = this.createSummaryCard(
+              "Carbs",
+              `${Math.round(dayPlan.totals.carbs)}g`,
+              "🍞"
+            );
+            const proteinCard = this.createSummaryCard(
+              "Protein",
+              `${Math.round(dayPlan.totals.protein)}g`,
+              "🍗"
+            );
+            const fatCard = this.createSummaryCard(
+              "Fat",
+              `${Math.round(dayPlan.totals.fat)}g`,
+              "🥑"
+            );
+
+            summaryGrid.appendChild(caloriesCard);
+            summaryGrid.appendChild(carbsCard);
+            summaryGrid.appendChild(proteinCard);
+            summaryGrid.appendChild(fatCard);
+
+            summaryDiv.appendChild(summaryGrid);
+            content.appendChild(summaryDiv);
+
+            dayPlan.meals.forEach((meal) => {
+              const mealDiv = document.createElement("div");
+              mealDiv.className = "meal-card";
+
+              const mealHeader = document.createElement("div");
+              mealHeader.className = "meal-header";
+
+              const mealTitle = document.createElement("h3");
+              mealTitle.className = "meal-title";
+              mealTitle.textContent = meal.name;
+
+              const mealCalories = document.createElement("div");
+              mealCalories.className = "meal-calories";
+              mealCalories.textContent = `${Math.round(
+                meal.totalCalories
+              )} kcal`;
+
+              mealHeader.appendChild(mealTitle);
+              mealHeader.appendChild(mealCalories);
+              mealDiv.appendChild(mealHeader);
+
+              const foodItemsDiv = document.createElement("div");
+              foodItemsDiv.className = "food-items";
+
+              meal.items.forEach((item) => {
+                const foodItem = document.createElement("div");
+                foodItem.className = "food-item";
+
+                const foodName = document.createElement("div");
+                foodName.className = "food-name";
+                foodName.textContent = item.name;
+
+                const foodDetails = document.createElement("div");
+                foodDetails.className = "food-details";
+
+                const servingDetail = document.createElement("div");
+                servingDetail.className = "food-detail";
+                servingDetail.innerHTML = `<span>🍽️</span> ${item.serving}`;
+
+                const caloriesDetail = document.createElement("div");
+                caloriesDetail.className = "food-detail";
+                caloriesDetail.innerHTML = `<span>⚡</span> ${Math.round(
+                  item.calories
+                )} kcal`;
+
+                foodDetails.appendChild(servingDetail);
+                foodDetails.appendChild(caloriesDetail);
+
+                foodItem.appendChild(foodName);
+                foodItem.appendChild(foodDetails);
+                foodItemsDiv.appendChild(foodItem);
+              });
+
+              mealDiv.appendChild(foodItemsDiv);
+
+              const nutritionDiv = document.createElement("div");
+              nutritionDiv.className = "nutrition-summary";
+
+              const carbsItem = this.createNutritionItem(
+                "Carbs",
+                `${Math.round(meal.totalCarbs)}g`
+              );
+              const proteinItem = this.createNutritionItem(
+                "Protein",
+                `${Math.round(meal.totalProtein)}g`
+              );
+              const fatItem = this.createNutritionItem(
+                "Fat",
+                `${Math.round(meal.totalFat)}g`
+              );
+              const caloriesItem = this.createNutritionItem(
+                "Calories",
+                `${Math.round(meal.totalCalories)} kcal`
+              );
+
+              nutritionDiv.appendChild(carbsItem);
+              nutritionDiv.appendChild(proteinItem);
+              nutritionDiv.appendChild(fatItem);
+              nutritionDiv.appendChild(caloriesItem);
+
+              mealDiv.appendChild(nutritionDiv);
+              content.appendChild(mealDiv);
+            });
+
+            contentContainer.appendChild(content);
+          });
+
+          container.appendChild(tabsContainer);
+          container.appendChild(contentContainer);
+        }
+
+        static createSummaryCard(title, value, icon) {
+          const card = document.createElement("div");
+          card.className = "summary-card";
+
+          const valueDiv = document.createElement("div");
+          valueDiv.className = "summary-value";
+          valueDiv.innerHTML = `${icon} ${value}`;
+
+          const titleDiv = document.createElement("div");
+          titleDiv.className = "summary-label";
+          titleDiv.textContent = title;
+
+          card.appendChild(valueDiv);
+          card.appendChild(titleDiv);
+
+          return card;
+        }
+
+        static createNutritionItem(label, value) {
+          const item = document.createElement("div");
+          item.className = "nutrition-item";
+
+          const valueDiv = document.createElement("div");
+          valueDiv.className = "nutrition-value";
+          valueDiv.textContent = value;
+
+          const labelDiv = document.createElement("div");
+          labelDiv.className = "nutrition-label";
+          labelDiv.textContent = label;
+
+          item.appendChild(valueDiv);
+          item.appendChild(labelDiv);
+
+          return item;
+        }
+
+        static showDayContent(dayIndex) {
+          const tabs = document.querySelectorAll(".day-tab");
+          tabs.forEach((tab, index) => {
+            if (index === dayIndex) {
+              tab.classList.add("active");
+            } else {
+              tab.classList.remove("active");
+            }
+          });
+
+          const contents = document.querySelectorAll(".day-content");
+          contents.forEach((content, index) => {
+            if (index === dayIndex) {
+              content.classList.add("active");
+            } else {
+              content.classList.remove("active");
+            }
+          });
+        }
+
+        static displayShoppingList(shoppingItems) {
+          const container = document.getElementById("shoppingListContainer");
+          container.innerHTML = "";
+          container.style.display = "block";
+
+          const header = document.createElement("h2");
+          header.className = "shopping-title";
+          header.textContent = "Shopping List";
+          container.appendChild(header);
+
+          const categories = {
+    'Proteins': shoppingItems.filter(item =>
+        item.toLowerCase().includes('chicken') ||
+        item.toLowerCase().includes('beef') ||
+        item.toLowerCase().includes('fish') ||
+        item.toLowerCase().includes('egg') ||
+        item.toLowerCase().includes('tofu')
+    ),
+    'Vegetables': shoppingItems.filter(item =>
+        item.toLowerCase().includes('broccoli') ||
+        item.toLowerCase().includes('spinach') ||
+        item.toLowerCase().includes('carrot') ||
+        item.toLowerCase().includes('tomato')
+    ),
+    'Fruits': shoppingItems.filter(item =>
+        item.toLowerCase().includes('apple') ||
+        item.toLowerCase().includes('banana') ||
+        item.toLowerCase().includes('berry')
+    ),
+    'Grains': shoppingItems.filter(item =>
+        item.toLowerCase().includes('rice') ||
+        item.toLowerCase().includes('bread') ||
+        item.toLowerCase().includes('pasta')
+    ),
+    'Dairy': shoppingItems.filter(item =>
+        item.toLowerCase().includes('milk') ||
+        item.toLowerCase().includes('cheese') ||
+        item.toLowerCase().includes('yogurt')
+    )
+};
+
+// Calculate the "Other" category after initializing other categories
+categories['Other'] = shoppingItems.filter(item =>
+    !categories['Proteins'].some(i => i === item) &&
+    !categories['Vegetables'].some(i => i === item) &&
+    !categories['Fruits'].some(i => i === item) &&
+    !categories['Grains'].some(i => i === item) &&
+    !categories['Dairy'].some(i => i === item)
+);
+
+
+          const categoriesContainer = document.createElement("div");
+          categoriesContainer.className = "shopping-categories";
+
+          for (const [category, items] of Object.entries(categories)) {
+            if (items.length === 0) continue;
+
+            const categoryDiv = document.createElement("div");
+            categoryDiv.className = "shopping-category";
+
+            const titleDiv = document.createElement("h3");
+            titleDiv.className = "category-title";
+            titleDiv.textContent = category;
+            categoryDiv.appendChild(titleDiv);
+
+            const itemsList = document.createElement("ul");
+            itemsList.className = "shopping-items";
+
+            items.forEach((item) => {
+              const li = document.createElement("li");
+              li.className = "shopping-item";
+              li.textContent = item;
+              itemsList.appendChild(li);
+            });
+
+            categoryDiv.appendChild(itemsList);
+            categoriesContainer.appendChild(categoryDiv);
+          }
+
+          container.appendChild(categoriesContainer);
+        }
+
+        static displayAdditionalTips(dietType, goal, hasRestrictions) {
+          const container = document.getElementById("additionalTips");
+          container.innerHTML = "";
+          container.style.display = "block";
+
+          const header = document.createElement("h2");
+          header.className = "tips-title";
+          header.textContent = "Additional Nutrition Tips";
+          container.appendChild(header);
+
+          const tipsList = document.createElement("ul");
+          tipsList.className = "tips-list";
+
+          const tips = NutritionProfile.getAdditionalTips(
+            dietType,
+            goal,
+            hasRestrictions
+          );
+          tips.forEach((tip) => {
+            const li = document.createElement("li");
+            li.textContent = tip;
+            tipsList.appendChild(li);
+          });
+
+          container.appendChild(tipsList);
+        }
+      }
+
+      function updateCalorieSuggestions() {
+        const calories =
+          parseInt(document.getElementById("calories").value) || 0;
+        const goal = document.getElementById("nutritionGoal").value;
+
+        const calorieSuggestion = NutritionProfile.getCalorieSuggestion(
+          calories,
+          goal
+        );
+        const goalSuggestion = NutritionProfile.getGoalSuggestion(goal);
+
+        document.getElementById("calorieSuggestion").textContent =
+          calorieSuggestion;
+        document.getElementById("goalSuggestion").textContent = goalSuggestion;
+      }
+
+      document
+        .getElementById("calories")
+        .addEventListener("input", updateCalorieSuggestions);
+      document
+        .getElementById("nutritionGoal")
+        .addEventListener("change", updateCalorieSuggestions);
+
+      updateCalorieSuggestions();
+    </script>
+  </body>
+</html>
